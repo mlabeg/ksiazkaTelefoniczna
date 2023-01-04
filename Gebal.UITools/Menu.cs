@@ -9,6 +9,7 @@ namespace Gebal.UITools
     public class Menu
     {
         private String[] elementy;
+        List<string> elementyList = new List<string>();//spr czy potrzebne
         private int najdluzszyElement = 0;
         /// <summary>
         /// (to właśnie wyświetli w podpowiedzi do obiektu elementyMenu)
@@ -17,7 +18,7 @@ namespace Gebal.UITools
         /// <param name="elementyMenu">Tablica elementow</param>
         public void Konfiguruj(string[] elementyMenu)
         {
-            if (elementyMenu.Length <= 20)
+            if (elementyMenu.Length <= 100)
             {
                 elementy = elementyMenu;
                 for (int i = 0; i < elementy.Length; i++)
@@ -32,6 +33,28 @@ namespace Gebal.UITools
             {
                 elementy = new string[0];
             }
+        }
+        public void Konfiguruj(List<string> kontakty)
+        {
+            if (kontakty.Count <= 100)
+            {
+                for (int i = 0; i < kontakty.Count; i++)
+                {
+                    elementy[i] = kontakty[i].ToString();
+                }
+                for (int i = 0; i < elementy.Length; i++)
+                {
+                    if (kontakty[i].Length > najdluzszyElement)
+                    {
+                        najdluzszyElement = kontakty[i].Length;
+                    }
+                }
+            }
+            else
+            {
+                elementy = new string[0];
+            }
+            
         }
         public int Wyswietl()
         {

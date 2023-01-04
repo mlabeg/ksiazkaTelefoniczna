@@ -87,4 +87,7 @@ namespace ksiazkaTelefoniczna
 
 ///TODO:
 ///zapisywanie i odczyt z pliku
+///funkcja zadzwoń 
+///lista posoortowana wg "najczęściej wybierane"
 ///
+// zostwiam ten projekt na luźniejsze czasy
