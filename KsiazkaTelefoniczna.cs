@@ -206,15 +206,21 @@ namespace ksiazkaTelefoniczna
         {
             Console.Clear();
         }
-        internal void usunKontakt()
+
+        /*internal void ()
         {
             usun(menuKontaktow());
 
-        }
+        }*/
 
-        internal void usun(int wybor)
+        internal void usunKontakt()
         {
-            kontaktList.Remove(kontaktList[wybor]);
+            int wybor = menuKontaktow();
+            if (wybor != -1)
+            {
+                kontaktList.Remove(kontaktList[wybor]);
+            }
+           
         }
     }
 }

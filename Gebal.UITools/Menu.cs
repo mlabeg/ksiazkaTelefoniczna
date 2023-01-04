@@ -38,10 +38,7 @@ namespace Gebal.UITools
         {
             if (kontakty.Count <= 100)
             {
-                for (int i = 0; i < kontakty.Count; i++)
-                {
-                    elementy[i] = kontakty[i].ToString();
-                }
+                elementy=kontakty.ToArray();   
                 for (int i = 0; i < elementy.Length; i++)
                 {
                     if (kontakty[i].Length > najdluzszyElement)
@@ -58,6 +55,7 @@ namespace Gebal.UITools
         }
         public int Wyswietl()
         {
+            Console.Clear();
             int wybrany = 0;
             if (elementy != null)
             {
