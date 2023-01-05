@@ -102,9 +102,7 @@ namespace Gebal.UITools
                     {
                         wybrany = -1;
                     }
-
-
-
+                   
                 } while (keyInfo.Key != ConsoleKey.Enter && keyInfo.Key != ConsoleKey.Escape);
             }
             Console.ResetColor();

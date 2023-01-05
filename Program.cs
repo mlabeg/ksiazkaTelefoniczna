@@ -11,32 +11,24 @@ namespace ksiazkaTelefoniczna
 {
     internal class Program
     {
+        static void M11ain(string[] args)
+        {
+            KontaktREMOTE tmp= new KontaktREMOTE();
+            tmp.dodajKontakt();
+        }
         static void Main(string[] args)
         {
             Menu menu = new Menu();
             menu.Konfiguruj(new string[] { " Dodaj kontakt", " Wyswietl wszystkie kontakty", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
-             ksiazkaTelefoniczna.dodajKontakt("Ania", 234);
-             ksiazkaTelefoniczna.dodajKontakt("Ola", 456);
-             ksiazkaTelefoniczna.dodajKontakt("Marek", 789);
-              ksiazkaTelefoniczna.dodajKontakt("Jan", 753);
-              ksiazkaTelefoniczna.dodajKontakt("Mama", 951);
-              ksiazkaTelefoniczna.dodajKontakt("Tata", 741);
-              ksiazkaTelefoniczna.dodajKontakt("i Ja", 852);
-
-           
-
-
-             
-            /*  Console.WriteLine() ;
-             ("Mama");
-              ksiazkaTelefoniczna.poNazwie("Zdzis");
-              ksiazkaTelefoniczna.poNazwie("Ja");
-              Console.WriteLine();
-              (789);
-              ksiazkaTelefoniczna.poNumerze(8522);
-              Console.ReadKey();*/
-
+             ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
+             ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
+             ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
+              ksiazkaTelefoniczna.dodajKontakt("Jan", "147");
+              ksiazkaTelefoniczna.dodajKontakt("Mama", "258");
+              ksiazkaTelefoniczna.dodajKontakt("Tata", "369");
+              ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");
+          
             int zadanie;
             do
             {
@@ -48,7 +40,7 @@ namespace ksiazkaTelefoniczna
                 switch (zadanie)
                 {
                     case 0:
-                        ksiazkaTelefoniczna.podajKontakt();
+                        ksiazkaTelefoniczna.dodaj();
                         break;
 
                     case 1:

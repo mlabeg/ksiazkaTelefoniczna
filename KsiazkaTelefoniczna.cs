@@ -14,7 +14,7 @@ namespace ksiazkaTelefoniczna
 
         public void podajKontakt()
         {
-            int numer;
+            string numer;
             string nazwa;
 
             do
@@ -26,10 +26,11 @@ namespace ksiazkaTelefoniczna
             do
             {
                 Console.Write("Podaj numer telefonu: ");
-                numer = int.Parse(Console.ReadLine());
+                numer = Console.ReadLine();
             } while (!regexNumer(numer));
 
             kontaktList.Add(new Kontakt(nazwa, numer));
+            Console.WriteLine($"Pomyslnie dodano kontakt {nazwa}");
         }
         private bool regexNazwa(string nazwa)
         {
@@ -45,10 +46,10 @@ namespace ksiazkaTelefoniczna
             }
         }
 
-        private bool regexNumer(int numer)
+        private bool regexNumer(string numer)
         {
             Regex regexNumer = new Regex(@"(\d){9,12}");
-            if (!regexNumer.IsMatch(numer.ToString()))
+            if (!regexNumer.IsMatch(numer))
             {
                 Console.WriteLine("Nieprawidlowy numer.");
                 return false;
@@ -59,7 +60,42 @@ namespace ksiazkaTelefoniczna
             }
 
         }
-        public void dodajKontakt(string nazwa, int numer)
+
+        /// <summary>
+        /// TODO:
+        /// regex-y wpierdolić do clasy kontakt
+        /// </summary>
+        public void dodaj()
+        {
+            Kontakt nowy;
+            Console.WriteLine("Gdzie zapiac kontakt? ");
+            Menu menu = new Menu();
+            menu.Konfiguruj(new string[] { "SIM", "REMOTE", "NA URZĄDZENIU" });
+
+            int wybor;
+            
+                wybor = menu.Wyswietl();
+                switch (wybor)
+                {
+                    case 0:
+                        nowy= new Kontakt();
+                        nowy.dodajKontakt();
+                        break;
+                    case 1:
+                        nowy = new KontaktREMOTE();
+                        kontaktList.Add(nowy);
+                        break;
+                    case 2:
+                        nowy= new KontaktPHONE();
+                    nowy.dodajKontakt();
+                    break;
+                    default:
+                        break;
+                 }
+           
+
+        }
+        public void dodajKontakt(string nazwa, string numer)
         {
 
             if (true)/*regexNazwa(nazwa) & regexNumer(numer)*/
@@ -102,7 +138,8 @@ namespace ksiazkaTelefoniczna
         }
         /// <summary>
         /// TODO:
-        /// rozbudowanie metody wyswietlWszystkieKontakty() o "edytuj", "usun", anuluj
+        /// rozbudowanie metody wyswietlWszystkieKontakty() o "zadzwoń" "wyświeet szczegóły"
+        /// "edytuj", "usun", anuluj
         /// </summary>
         /// <returns></returns>
         private int menuKontaktow()
@@ -126,7 +163,7 @@ namespace ksiazkaTelefoniczna
             return kontaktow.Wyswietl();
         }
 
-        public void wyswietlPoNumerze(int numer)
+        public void wyswietlPoNumerze(string numer)
         {
             bool czyJest = false;
             foreach (Kontakt kontakt in kontaktList)
@@ -145,7 +182,7 @@ namespace ksiazkaTelefoniczna
         public void poNumerze()
         {
             Console.Write("Podaj numer: ");
-            int numer = int.Parse(Console.ReadLine());
+            string numer = Console.ReadLine();
             var kontakt = kontaktList.FirstOrDefault(e => e.numer == numer);
             if (kontakt == null)
             {
