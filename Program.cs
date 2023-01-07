@@ -78,8 +78,20 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///zapisywanie i odczyt z pliku
+///uzycie metody wirtualnej/abstrakcyjnej w klasie kontakt
+///sprawdzenie regex w klasach kontakt
+///
 ///funkcja zadzwoń 
 ///lista posoortowana wg "najczęściej wybierane"
 ///
-// zostwiam ten projekt na luźniejsze czasy
+
+///TODO2:
+///
+///pole urodziny w KontaktyURZADZENIE
+///wyświetlanie kto ma dzisiaj urodziny pod głównym menu
+///zapisywanie i odczyt z pliku
+
+
+///POPRAWKI:
+///polskie znaki w całym projekcie
+///

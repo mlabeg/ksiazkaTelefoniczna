@@ -77,9 +77,11 @@ namespace ksiazkaTelefoniczna
                 wybor = menu.Wyswietl();
                 switch (wybor)
                 {
+                //to wszystko są wywołania statyczne, pomyśl o tym co zrobić żby były dynamiczne
+
                     case 0:
                         nowy= new Kontakt();
-                        nowy.dodajKontakt();
+                        kontaktList.Add(nowy);
                         break;
                     case 1:
                         nowy = new KontaktREMOTE();
@@ -87,7 +89,7 @@ namespace ksiazkaTelefoniczna
                         break;
                     case 2:
                         nowy= new KontaktPHONE();
-                    nowy.dodajKontakt();
+                           nowy.dodajKontakt();
                     break;
                     default:
                         break;
