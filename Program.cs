@@ -44,6 +44,7 @@ namespace ksiazkaTelefoniczna
                         break;
 
                     case 1:
+                      
                         ksiazkaTelefoniczna.wyswietlWszystkieKontakty();
                         break;
 
@@ -86,10 +87,12 @@ namespace ksiazkaTelefoniczna
 ///
 
 ///TODO2:
-///
+///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
 ///pole urodziny w KontaktyURZADZENIE
-///wyświetlanie kto ma dzisiaj urodziny pod głównym menu
+////wyświetlanie kto ma dzisiaj urodziny pod głównym menu
 ///zapisywanie i odczyt z pliku
+///"USTAWIENIA" gdzie możn zmienić jak wyswietać "wyświetlanie wszystkich kotaktów" t
+////tj. "po imieniu"/"po nazwisku"...
 
 
 ///POPRAWKI:

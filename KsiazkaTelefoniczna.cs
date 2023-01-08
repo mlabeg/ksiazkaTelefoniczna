@@ -1,6 +1,7 @@
 ﻿using Gebal.UITools;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -61,10 +62,6 @@ namespace ksiazkaTelefoniczna
 
         }
 
-        /// <summary>
-        /// TODO:
-        /// regex-y wpierdolić do clasy kontakt
-        /// </summary>
         public void dodaj()
         {
             Kontakt nowy;
@@ -77,19 +74,29 @@ namespace ksiazkaTelefoniczna
                 wybor = menu.Wyswietl();
                 switch (wybor)
                 {
-                //to wszystko są wywołania statyczne, pomyśl o tym co zrobić żby były dynamiczne
+                //to wszystko są wywołania statyczne, pomyśl o tym co zrobić żeby były dynamiczne
 
                     case 0:
                         nowy= new Kontakt();
+                    if (nowy.dodajKontakt())
+                    {
                         kontaktList.Add(nowy);
+                    }
+                                            
                         break;
                     case 1:
-                        nowy = new KontaktREMOTE();
+                    nowy = new KontaktREMOTE();
+                    if (nowy.dodajKontakt())
+                    {
                         kontaktList.Add(nowy);
-                        break;
+                    }
+                    break;
                     case 2:
-                        nowy= new KontaktPHONE();
-                           nowy.dodajKontakt();
+                    nowy = new KontaktPHONE();
+                    if (nowy.dodajKontakt())
+                    {
+                        kontaktList.Add(nowy);
+                    }
                     break;
                     default:
                         break;
@@ -135,7 +142,8 @@ namespace ksiazkaTelefoniczna
 
         public void wyswietlWszystkieKontakty()
         {
-            wyswietlKontakty(kontaktList);
+            //wyswietlKontakty(kontaktList);
+            menuKontaktow();
 
         }
         /// <summary>
@@ -150,11 +158,6 @@ namespace ksiazkaTelefoniczna
         ///
         {
             List<string> kontakty = new List<string>();
-            
-            //string[] kontakty = new string[kontaktCount] { };//!!
-            ///TODO:
-            ///tu wyrzuca błąd - odwołanie się poza zakres tablicy
-            ///rozważyć użycie StringBuildera
             for (int i = 0; i < kontaktList.Count; i++)
             {
                 kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
