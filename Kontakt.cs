@@ -28,12 +28,11 @@ namespace ksiazkaTelefoniczna
             Numer= numer;
         }
 
-        private bool regexNazwa(string nazwa)
+        protected bool regexNazwa(string nazwa)
         {
             Regex regexNazwa = new Regex(@"(\w){3,}");
             if (!regexNazwa.IsMatch(nazwa))
             {
-                Console.WriteLine("Nieprawidlowa nazwa.");
                 return false;
             }
             else
@@ -42,12 +41,11 @@ namespace ksiazkaTelefoniczna
             }
         }
 
-        private bool regexNumer(string numer)
+        protected bool regexNumer(string numer)
         {
             Regex regexNumer = new Regex(@"(\d){9}");
             if (!regexNumer.IsMatch(numer))
             {
-                Console.WriteLine("Nieprawidlowy numer.");
                 return false;
             }
             else
@@ -65,14 +63,15 @@ namespace ksiazkaTelefoniczna
                 dane[i] = new StringBuilder();
             }
 
-            // Set the initial cursor position
-            //Console.SetCursorPosition(0, 15);
-
             // Index of the current string being edited
             int wybor = 0;
+            bool regexCheckNazwa = true;
+            bool regexCheckNumer = true;
             ConsoleKeyInfo key;
+
             do
             {
+                
                 // Clear the console and print the current dane
                 Console.Clear();
                 Console.WriteLine("Nazwa: ");
@@ -84,15 +83,26 @@ namespace ksiazkaTelefoniczna
                     Console.WriteLine(dane[i].ToString());
                 }
 
+                if (!regexCheckNazwa)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nieprawidłowa nazwa.");
+                }
+                if (!regexCheckNumer)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nieprawidłowy numer telefonu.");
+
+                }
+
                 // wyświetlanie kursora, sprawdź czy wgl jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 15, wybor);
                 Console.Write("|");
 
-                // Wait for the user to press a key
                 key = Console.ReadKey(true);
 
-                // Handle the arrow keys
-                if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.DownArrow)
+                if (key.Key == ConsoleKey.Escape) break;
+                else if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.DownArrow)
                 {
                     wybor = (wybor + 1) % 2;
                 }
@@ -112,9 +122,30 @@ namespace ksiazkaTelefoniczna
                         currentStringBuilder.Append(key.KeyChar);
                     }
                 }
-            } while (key.Key != ConsoleKey.Enter);
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    if (!(regexNazwa(dane[0].ToString())))
+                    {
+                        regexCheckNazwa = false;
+                    }
+                    else
+                    {
+                        regexCheckNazwa = true;
+                    }
+                    if (!(regexNumer(dane[1].ToString())))
+                    {
+                        regexCheckNumer = false;
+                    }
+                    else
+                    {
+                        regexCheckNumer = true;
+                    }
+                }
+            } while (!(key.Key == ConsoleKey.Enter && regexCheckNazwa && regexCheckNumer) );
+        
+           
 
-            if (dane.Length != 0)
+            if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
             {
                 this.Nazwa = dane[0].ToString();
                 this.Numer = dane[1].ToString();
@@ -155,6 +186,8 @@ namespace ksiazkaTelefoniczna
 
             // Index of the current string being edited
             int wybor = 0;
+            bool regexCheckNazwa = true;
+            bool regexCheckNumer = true;
             ConsoleKeyInfo key;
             do
             {
@@ -172,6 +205,17 @@ namespace ksiazkaTelefoniczna
 
                     Console.WriteLine(dane[i].ToString());
                 }
+                if (!regexCheckNazwa)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nieprawidłowa nazwa.");
+                }
+                if (!regexCheckNumer)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nieprawidłowy numer telefonu.");
+
+                }
 
                 //jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 15, wybor);
@@ -180,8 +224,8 @@ namespace ksiazkaTelefoniczna
                 // Wait for the user to press a key
                 key = Console.ReadKey(true);
 
-                // Handle the arrow keys
-                if (key.Key == ConsoleKey.UpArrow)
+                if (key.Key == ConsoleKey.Escape) break;
+                else if (key.Key == ConsoleKey.UpArrow)
                 {
                     wybor = (wybor + 4) % 5;
                 }
@@ -189,7 +233,8 @@ namespace ksiazkaTelefoniczna
                 {
                     wybor = (wybor + 1) % 5;
                 }
-                // Handle other keys
+                else if (key.Key == ConsoleKey.Escape) break;
+
                 else
                 {
                     // Get the current string being edited
@@ -200,25 +245,45 @@ namespace ksiazkaTelefoniczna
                     {
                         currentStringBuilder.Remove(currentStringBuilder.Length - 1, 1);
                     }
-                    // Handle other keys
                     else if (key.Key != ConsoleKey.Enter)
                     {
                         currentStringBuilder.Append(key.KeyChar);
                     }
                 }
-            } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    if (!(regexNazwa(dane[0].ToString())))
+                    {
+                            regexCheckNazwa = false;
+                        }
+                        else
+                        {
+                            regexCheckNazwa = true;
+                        }
+                    if (!(regexNumer(dane[3].ToString())))
+                        {
+                            regexCheckNumer = false;
+                        }
+                        else
+                        {
+                            regexCheckNumer = true;
+                        }
+                    }
+                
+            } while (!(key.Key == ConsoleKey.Enter && regexCheckNazwa && regexCheckNumer)) ;
 
-            if (dane.Length != 0&& key.Key != ConsoleKey.Escape)
-            {
-                this.Nazwa = dane[0].ToString();
-                this.Imie = dane[1].ToString();
-                this.Nazwisko = dane[2].ToString();
-                this.Numer = dane[3].ToString();
-                this.Email = dane[4].ToString();
-                return true;
-            }
-            return false;
+                if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
+                {
+                    this.Nazwa = dane[0].ToString();
+                    this.Imie = dane[1].ToString();
+                    this.Nazwisko = dane[2].ToString();
+                    this.Numer = dane[3].ToString();
+                    this.Email = dane[4].ToString();
+                    return true;
+                }
+                return false;
         }
+         
 
         public override void wyswietl()
         {
@@ -258,6 +323,8 @@ namespace ksiazkaTelefoniczna
 
             // Index of the current string being edited
             int wybor = 0;
+            bool regexCheckNazwa = true;
+            bool regexCheckNumer = true;
             ConsoleKeyInfo key;
             do
             {
@@ -279,6 +346,18 @@ namespace ksiazkaTelefoniczna
                     Console.WriteLine(dane[i].ToString());
                 }
 
+                if (!regexCheckNazwa)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nieprawidłowa nazwa.");
+                }
+                if (!regexCheckNumer)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nieprawidłowy numer telefonu.");
+
+                }
+
                 // wyświetlanie kursora, nie wygląda zbyt ładnie ale jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 20, wybor);
                 Console.Write("|");
@@ -286,8 +365,8 @@ namespace ksiazkaTelefoniczna
                 // Wait for the user to press a key
                 key = Console.ReadKey(true);
 
-                // Handle the arrow keys
-                if (key.Key == ConsoleKey.UpArrow)
+                if (key.Key == ConsoleKey.Escape) break;
+                else if (key.Key == ConsoleKey.UpArrow)
                 {
                     wybor = (wybor + 7) % 8;
                 }
@@ -312,7 +391,27 @@ namespace ksiazkaTelefoniczna
                         currentStringBuilder.Append(key.KeyChar);
                     }
                 }
-            } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (!(regexNazwa(dane[0].ToString())))
+                        {
+                            regexCheckNazwa = false;
+                        }
+                        else
+                        {
+                            regexCheckNazwa = true;
+                        }
+                        if (!(regexNumer(dane[4].ToString())))
+                        {
+                            regexCheckNumer = false;
+                        }
+                        else
+                        {
+                            regexCheckNumer = true;
+                        }
+                    }
+                
+            } while (!(key.Key == ConsoleKey.Enter && regexCheckNazwa && regexCheckNumer));
 
             if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
             {

@@ -79,11 +79,9 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///uzycie metody wirtualnej/abstrakcyjnej w klasie kontakt
-///sprawdzenie regex w klasach kontakt
-///
-///funkcja zadzwoń 
-///lista posoortowana wg "najczęściej wybierane"
+///rozbudowa menu wyświetl -> "zadzwoń", "wyswietl pelne dae", edytuj, usun
+///dynamiczne wywołanie dziedziczonej metody wirtualnej -> wyświetl()
+///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
 ///
 
 ///TODO2:
