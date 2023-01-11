@@ -22,8 +22,9 @@ namespace ksiazkaTelefoniczna
             menu.Konfiguruj(new string[] { " Dodaj kontakt", " Wyswietl wszystkie kontakty", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
              ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
-            /* ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
-             ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
+            ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
+       
+             /*ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
               ksiazkaTelefoniczna.dodajKontakt("Jan", "147");
               ksiazkaTelefoniczna.dodajKontakt("Mama", "258");
               ksiazkaTelefoniczna.dodajKontakt("Tata", "369");
@@ -51,6 +52,7 @@ namespace ksiazkaTelefoniczna
                     case 2:
                         ksiazkaTelefoniczna.poNazwie();
 
+                  
                         break;
 
                     case 3:
@@ -79,10 +81,12 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///rozbudowa menu wyświetl -> "zadzwoń", "wyswietl pelne dae", edytuj, usun
-///dynamiczne wywołanie dziedziczonej metody wirtualnej -> wyświetl()
-///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
+///przenieś otydzwonisz do folderu z projektem
+///MENU: dodaj kontakt; wyświetl wszystkie;...  <- przemyśl jak to ma wyglądać 
+///rozbudowa menu wyświetl -> edytuj
 ///
+///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
+///@dodaj/edytuj przechodzenie tabulatorem między wierszami
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()

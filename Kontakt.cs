@@ -3,10 +3,13 @@ using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -156,13 +159,31 @@ namespace ksiazkaTelefoniczna
 
         public  virtual void wyswietl()
         {
+            Console.Clear();
             Console.WriteLine($"{Nazwa}");
             Console.WriteLine($"{Numer}");
+            Console.ReadKey();
         }
 
         internal void edytuj()
         {
             throw new NotImplementedException();
+        }
+        internal virtual void zadzwon()
+        {
+            Console.Clear();
+            Console.WriteLine($"Dzwonię do {nazwa}");
+            Console.WriteLine(numer);
+
+            for (int i=0; i < 3; i++)
+            {
+                Console.SetCursorPosition(0, 4);
+                Console.WriteLine("             ");
+                Console.SetCursorPosition(0, 4);
+                Thread.Sleep(1000);
+                Console.WriteLine("DRYŃ, DRYŃ");
+                Thread.Sleep(1000);
+            }
         }
     }
     class KontaktREMOTE:  Kontakt
@@ -170,6 +191,7 @@ namespace ksiazkaTelefoniczna
         protected string Imie, Nazwisko;
         protected string Email;
         internal KontaktREMOTE(){ }
+        internal KontaktREMOTE(string nazwa, string numer) : base(nazwa, numer) { }
 
         KontaktREMOTE(string nazwa, string imie,string nazwisko, string numer, string email):base(nazwa,numer)
         {
@@ -292,11 +314,13 @@ namespace ksiazkaTelefoniczna
 
         public override void wyswietl()
         {
+            Console.Clear();
             Console.WriteLine($"{Nazwa}    ");
             if (Imie != null) Console.WriteLine($"{Imie}   ");
             if (Nazwisko != null) Console.WriteLine($"{Nazwisko}   ");
             Console.WriteLine($"{Numer}  ");
             if (Email != null) Console.WriteLine($"{Email}  ");
+            Console.ReadKey();
             
         }
 
@@ -309,6 +333,7 @@ namespace ksiazkaTelefoniczna
         //DateTime Urodziny;
 
         internal KontaktPHONE(){}
+        internal KontaktPHONE(string nazwa, string numer):base(nazwa,numer) { }
 
         internal string drugieImie { get;}
         internal string firma { get;}
@@ -433,6 +458,7 @@ namespace ksiazkaTelefoniczna
         }
         public override void wyswietl()
         {
+            Console.Clear();
             Console.WriteLine($"{Nazwa}    ");
             if (Imie != null) Console.WriteLine($"{Imie}   ");
             if (DrugieImie != null) Console.WriteLine($"{DrugieImie}   ");
@@ -441,6 +467,31 @@ namespace ksiazkaTelefoniczna
             if (Email != null) Console.WriteLine($"{Email}  ");
             if (Firma != null) Console.WriteLine($"{Firma}   ");
             if (NumerSluzbowy != null) Console.WriteLine($"{NumerSluzbowy}   ");
+            Console.ReadKey();
+        }
+        internal override void zadzwon()
+        {
+            base.zadzwon();
+            Console.Clear();
+
+            string[] rozmowa = new string[] { "- Halo?", 
+                "- Sorry stary, nie mogę gadać, robie projekt na JiPP!",
+                "- Ale to ty dzwonisz.",
+                "- Narazie!"};
+
+            for(int i = 0; i < rozmowa.Length; i++)
+            {
+                foreach (var character in rozmowa[i])
+                {
+                    Console.Write(character);
+                    Thread.Sleep(30);
+                }
+
+                Thread.Sleep(500);
+                Console.WriteLine();
+            }
+            string sciezka = "C:/Users/enix/Desktop/otydzwonisz.jpg";
+            Process.Start(sciezka);
         }
     }
     

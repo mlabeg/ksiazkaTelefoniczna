@@ -181,8 +181,8 @@ namespace ksiazkaTelefoniczna
         private void szczegoly(int wybrany)
         {
             Menu szczegoly=new Menu();
-            kontaktList[wybrany].
-
+          //  kontaktList[wybrany].
+          ///Co ja tutaj chciałem zrobić?
 
             szczegoly.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
                 ///tu można czytać jakiej klasy jest zmienna i dla SIM nie wyświetlać "Wyswietl pelne dane"
@@ -192,7 +192,7 @@ namespace ksiazkaTelefoniczna
                 switch (wyswietl)
                 {
                     case 0:
-                        zadzwon();
+                        kontaktList[wybrany].zadzwon();
                         break;
                     case 1:
                         kontaktList[wybrany].wyswietl();
@@ -210,13 +210,16 @@ namespace ksiazkaTelefoniczna
 
         }
 
-        private void zadzwon()
+        /*private void zadzwon()
         {
-            Console.WriteLine("DRYŃ, DRYŃ...");
+            Console.Clear();
+            Console.WriteLine($"Dzwonię do {nazwa}");
+            Console.WriteLine(numer);
+            Console.WriteLine();
+            Console.WriteLine("Naciśnij dowoly przycisk, aby zakończyć połączenie.");
+            Console.ReadKey();
+        }*/
 
-
-        }
-        
 
         public void wyswietlPoNumerze(string numer)
         {

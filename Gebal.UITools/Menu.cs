@@ -108,7 +108,7 @@ namespace Gebal.UITools
             return wybrany;
         }
 
-        public int Wyswietl(int rzad)
+        public int Wyswietl(int wiersz)
         {
             int wybrany = 0;
             if (elementy != null)
@@ -131,7 +131,7 @@ namespace Gebal.UITools
                         {
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                         }
-                        Console.SetCursorPosition(25, rzad+i);
+                        Console.SetCursorPosition(25, wiersz+i);
                         Console.WriteLine(elementy[i].PadRight(najdluzszyElement + 2));
                     }
 
