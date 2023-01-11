@@ -22,12 +22,12 @@ namespace ksiazkaTelefoniczna
             menu.Konfiguruj(new string[] { " Dodaj kontakt", " Wyswietl wszystkie kontakty", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
              ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
-             ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
+            /* ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
              ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
               ksiazkaTelefoniczna.dodajKontakt("Jan", "147");
               ksiazkaTelefoniczna.dodajKontakt("Mama", "258");
               ksiazkaTelefoniczna.dodajKontakt("Tata", "369");
-              ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");
+              ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");*/
           
             int zadanie;
             do
@@ -91,8 +91,10 @@ namespace ksiazkaTelefoniczna
 ///zapisywanie i odczyt z pliku
 ///"USTAWIENIA" gdzie możn zmienić jak wyswietać "wyświetlanie wszystkich kotaktów" t
 ////tj. "po imieniu"/"po nazwisku"...
+///@Menu można dodać tu sprawdzanie najdłuższej nazwy kontaktu i wyświetlenie tego menu odpowiednio dalej
 
 
 ///POPRAWKI:
 ///polskie znaki w całym projekcie
+///usun funkcje, ktrych nie używasz 
 ///

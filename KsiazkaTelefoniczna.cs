@@ -142,8 +142,16 @@ namespace ksiazkaTelefoniczna
 
         public void wyswietlWszystkieKontakty()
         {
-            //wyswietlKontakty(kontaktList);
-            menuKontaktow();
+            if(kontaktList.Count != 0)
+            {
+                szczegoly(menuKontaktow());
+            }
+            else
+            {
+                Console.WriteLine("Brak pozycji do wyswietlenia!");
+                Console.ReadKey();
+            }
+           
 
         }
         /// <summary>
@@ -153,20 +161,62 @@ namespace ksiazkaTelefoniczna
         /// </summary>
         /// <returns></returns>
         private int menuKontaktow()
+            //nie ruszaj tej metody, jest używana równie przez metodę usun()
         //zastanawiam się czy jest możliwość, żeby menuKkontaktow() wywoływać tylko raz, nie za każdym razem jak wywołamy jakąś nadrzędną fukcję
         //żeby była to "właściwość klasy", a nie danej funkcji //<- właśnie wydaje mi się, że nie, bo o to chodzi w menu, że trzeba je wywołać za każdym razem
         ///
         {
             List<string> kontakty = new List<string>();
-            for (int i = 0; i < kontaktList.Count; i++)
+                for (int i = 0; i < kontaktList.Count; i++)
+                {
+                    kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
+
+                }
+
+                Menu kontaktow = new Menu();
+                kontaktow.Konfiguruj(kontakty);
+                return kontaktow.Wyswietl();
+        }
+                
+        private void szczegoly(int wybrany)
+        {
+            Menu szczegoly=new Menu();
+            kontaktList[wybrany].
+
+
+            szczegoly.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
+                ///tu można czytać jakiej klasy jest zmienna i dla SIM nie wyświetlać "Wyswietl pelne dane"
+            int wyswietl=szczegoly.Wyswietl(wybrany);
+            if (wyswietl >= 0)
             {
-                kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
+                switch (wyswietl)
+                {
+                    case 0:
+                        zadzwon();
+                        break;
+                    case 1:
+                        kontaktList[wybrany].wyswietl();
+                        break;
+                    case 2:
+                        kontaktList[wybrany].edytuj();
+                        break;
+                    case 3:
+                        kontaktList.RemoveAt(wybrany);
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            Menu kontaktow = new Menu();
-            kontaktow.Konfiguruj(kontakty);
-            return kontaktow.Wyswietl();
         }
+
+        private void zadzwon()
+        {
+            Console.WriteLine("DRYŃ, DRYŃ...");
+
+
+        }
+        
 
         public void wyswietlPoNumerze(string numer)
         {
@@ -249,19 +299,23 @@ namespace ksiazkaTelefoniczna
             Console.Clear();
         }
 
-        /*internal void ()
-        {
-            usun(menuKontaktow());
-
-        }*/
-
         internal void usunKontakt()
         {
-            int wybor = menuKontaktow();
-            if (wybor != -1)
+            if (kontaktList.Count != 0)
             {
-                kontaktList.Remove(kontaktList[wybor]);
+                int wybor = menuKontaktow();
+                if (wybor != -1)
+                {
+                    kontaktList.Remove(kontaktList[wybor]);
+                }
             }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Brak kontaktów do usunięcia!");
+                Console.ReadKey();
+            }
+            
            
         }
     }

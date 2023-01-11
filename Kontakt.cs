@@ -159,6 +159,11 @@ namespace ksiazkaTelefoniczna
             Console.WriteLine($"{Nazwa}");
             Console.WriteLine($"{Numer}");
         }
+
+        internal void edytuj()
+        {
+            throw new NotImplementedException();
+        }
     }
     class KontaktREMOTE:  Kontakt
     {
@@ -296,8 +301,6 @@ namespace ksiazkaTelefoniczna
         }
 
     }
-
-
     class KontaktPHONE: KontaktREMOTE
     {
         string DrugieImie;
@@ -442,3 +445,4 @@ namespace ksiazkaTelefoniczna
     }
     
 }
+ 
