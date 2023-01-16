@@ -1,65 +1,29 @@
-﻿using Gebal.UITools;
-using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace ksiazkaTelefoniczna
 {
-    class Kontakt
+    class KontaktREMOTE : Kontakt
     {
-        protected string Nazwa;
-        protected string Numer;
+        protected string Imie, Nazwisko;
+        protected string Email;
+        internal KontaktREMOTE() { }
+        internal KontaktREMOTE(string nazwa, string numer) : base(nazwa, numer) { }
 
-        internal string nazwa { get { return Nazwa; } }
-        internal string numer { get { return Numer; } }
-
-        internal Kontakt() { }
-
-        internal Kontakt(string nazwa, string numer)
+        KontaktREMOTE(string nazwa, string imie, string nazwisko, string numer, string email) : base(nazwa, numer)
         {
-            Nazwa = nazwa;
-            Numer = numer;
+            Imie = imie;
+            Nazwisko = nazwisko;
+            Email = email;
         }
-
-
-        protected bool regexNazwa(string nazwa)
-        {
-            Regex regexNazwa = new Regex(@"(\w){3,}");
-            if (!regexNazwa.IsMatch(nazwa))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        protected bool regexNumer(string numer)
-        {
-            Regex regexNumer = new Regex(@"(\d){9}");
-            if (!regexNumer.IsMatch(numer))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
-        }
-
-        public virtual bool dodajKontakt()
+        internal string imie { get; set; }
+        internal string nazwisko { get; set; }
+        //private string nazwisko { set;}
+        internal string email { get; set; }
+        public override bool dodajKontakt()
         {
             StringBuilder[] dane = new StringBuilder[5];
             for (int i = 0; i < 5; i++)
@@ -72,21 +36,22 @@ namespace ksiazkaTelefoniczna
             bool regexCheckNazwa = true;
             bool regexCheckNumer = true;
             ConsoleKeyInfo key;
-
             do
             {
-
                 // Clear the console and print the current dane
                 Console.Clear();
                 Console.WriteLine("Nazwa: ");
+                Console.WriteLine("Imie: ");
+                Console.WriteLine("Nazwisko: ");
                 Console.WriteLine("Numer: ");
+                Console.WriteLine("Email: ");
 
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     Console.SetCursorPosition(15, i);
+
                     Console.WriteLine(dane[i].ToString());
                 }
-
                 if (!regexCheckNazwa)
                 {
                     Console.WriteLine();
@@ -99,16 +64,21 @@ namespace ksiazkaTelefoniczna
 
                 }
 
-                // wyświetlanie kursora, sprawdź czy wgl jest potrzebne
+                //jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 15, wybor);
                 Console.Write("|");
 
+                // Wait for the user to press a key
                 key = Console.ReadKey(true);
 
                 if (key.Key == ConsoleKey.Escape) break;
-                else if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.Tab)
+                else if (key.Key == ConsoleKey.UpArrow)
                 {
-                    wybor = (wybor + 1) % 2;
+                    wybor = (wybor + 4) % 5;
+                }
+                else if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.Tab)
+                {
+                    wybor = (wybor + 1) % 5;
                 }
                 else
                 {
@@ -120,7 +90,6 @@ namespace ksiazkaTelefoniczna
                     {
                         currentStringBuilder.Remove(currentStringBuilder.Length - 1, 1);
                     }
-                    // Handle other keys
                     else if (key.Key != ConsoleKey.Enter)
                     {
                         currentStringBuilder.Append(key.KeyChar);
@@ -136,7 +105,7 @@ namespace ksiazkaTelefoniczna
                     {
                         regexCheckNazwa = true;
                     }
-                    if (!(regexNumer(dane[1].ToString())))
+                    if (!(regexNumer(dane[3].ToString())))
                     {
                         regexCheckNumer = false;
                     }
@@ -145,54 +114,43 @@ namespace ksiazkaTelefoniczna
                         regexCheckNumer = true;
                     }
                 }
+
             } while (!(key.Key == ConsoleKey.Enter && regexCheckNazwa && regexCheckNumer));
-
-
 
             if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
             {
                 this.Nazwa = dane[0].ToString();
-                this.Numer = dane[1].ToString();
+                this.Imie = dane[1].ToString();
+                this.Nazwisko = dane[2].ToString();
+                this.Numer = dane[3].ToString();
+                this.Email = dane[4].ToString();
                 return true;
             }
             return false;
         }
-        public virtual bool edytujKontakt() {
+        public override bool edytujKontakt() {
             return true;
         }
-
-        public virtual void wyswietl()
+        protected override bool edytuj(StringBuilder[] dane)
         {
-            Console.Clear();
-            Console.WriteLine($"{Nazwa}");
-            Console.WriteLine($"{Numer}");
-            Console.ReadKey();
-        }
-
-        protected virtual bool edytuj(StringBuilder[] dane)
-        {
-            Console.WriteLine("Edytuj w Kontakt.cs");
+            Console.WriteLine("Edytuj w KontaktREMOTE.cs");
             Console.ReadKey();
             return false;
         }
-        internal virtual void zadzwon()
+
+
+
+        public override void wyswietl()
         {
             Console.Clear();
-            Console.WriteLine($"Dzwonię do {nazwa}");
-            Console.WriteLine(numer);
+            Console.WriteLine($"{Nazwa}    ");
+            if (Imie != null) Console.WriteLine($"{Imie}   ");
+            if (Nazwisko != null) Console.WriteLine($"{Nazwisko}   ");
+            Console.WriteLine($"{Numer}  ");
+            if (Email != null) Console.WriteLine($"{Email}  ");
+            Console.ReadKey();
 
-            for (int i = 0; i < 3; i++)
-            {
-                Console.SetCursorPosition(0, 4);
-                Console.WriteLine("             ");
-                Console.SetCursorPosition(0, 4);
-                Thread.Sleep(1000);
-                Console.WriteLine("DRYŃ, DRYŃ");
-                Thread.Sleep(1000);
-            }
         }
+
     }
 }
-    
-    
- 

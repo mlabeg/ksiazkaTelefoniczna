@@ -11,17 +11,14 @@ namespace ksiazkaTelefoniczna
 {
     internal class Program
     {
-        static void M11ain(string[] args)
-        {
-            KontaktREMOTE tmp= new KontaktREMOTE();
-            tmp.dodajKontakt();
-        }
         static void Main(string[] args)
         {
             Menu menu = new Menu();
             menu.Konfiguruj(new string[] { " Dodaj kontakt", " Wyswietl wszystkie kontakty", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
              ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
+            Kontakt kontakt = new KontaktPHONE("mordo", "468");
+            ksiazkaTelefoniczna.dodajViaConsole(kontakt);
             ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
        
              /*ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
@@ -81,12 +78,12 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///przenieś otydzwonisz do folderu z projektem
 ///MENU: dodaj kontakt; wyświetl wszystkie;...  <- przemyśl jak to ma wyglądać 
 ///rozbudowa menu wyświetl -> edytuj
 ///
 ///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
-///@dodaj/edytuj przechodzenie tabulatorem między wierszami
+///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
+///
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
@@ -96,9 +93,20 @@ namespace ksiazkaTelefoniczna
 ///"USTAWIENIA" gdzie możn zmienić jak wyswietać "wyświetlanie wszystkich kotaktów" t
 ////tj. "po imieniu"/"po nazwisku"...
 ///@Menu można dodać tu sprawdzanie najdłuższej nazwy kontaktu i wyświetlenie tego menu odpowiednio dalej
+///@szczegoly.konfiguruj()@szczegoly()@KsiazkaTelefoniczna.cs(204) można czytać, 
+//////jakiej klasy jest zmienna i dla SIM nie wyświetlać "Wyswietl pelne dane"
 
 
 ///POPRAWKI:
 ///polskie znaki w całym projekcie
 ///usun funkcje, ktrych nie używasz 
+///narysować graf UML
 ///
+///
+//tak napisać funkcję zadzwoń(), żeby używała obiektu innego kontaktu??
+//wg wykładu 7. (8. zjazd)  ??? pomyśl czy to wgl ma sens i czy już tego nie zrobiłeś??
+
+
+///DECYZJE:
+///dodaj() @KsiazkaTelefoniczna czy nie ładniej byłoby gdyby w końcowych if-ach wywoływać funkcję dodajViaConsole()?
+//////na 100% byłoby to wywołanie dynamiczne

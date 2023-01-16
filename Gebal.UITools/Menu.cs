@@ -110,6 +110,7 @@ namespace Gebal.UITools
 
         public int Wyswietl(int wiersz)
         {
+            if (wiersz == -1) return -1;
             int wybrany = 0;
             if (elementy != null)
             {
@@ -118,7 +119,7 @@ namespace Gebal.UITools
 
                 do
                 {
-                    
+
                     ///TODO:
                     ///można dodać tu sprawdzanie najdłuższej nazwy kontaktu i wyświetlenie tego menu odpowiednio dalej
                     for (int i = 0; i < elementy.Length; i++)
@@ -131,7 +132,7 @@ namespace Gebal.UITools
                         {
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                         }
-                        Console.SetCursorPosition(25, wiersz+i);
+                        Console.SetCursorPosition(25, wiersz + i);
                         Console.WriteLine(elementy[i].PadRight(najdluzszyElement + 2));
                     }
 
@@ -160,6 +161,12 @@ namespace Gebal.UITools
                     }
 
                 } while (keyInfo.Key != ConsoleKey.Enter && keyInfo.Key != ConsoleKey.Escape);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Brak pozycji do wyświetleia!");
+                Console.ReadKey();
             }
             Console.ResetColor();
             return wybrany;
