@@ -84,6 +84,7 @@ namespace ksiazkaTelefoniczna
 ///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
 //////
 ///w wyświetlaniu pełnych informacji wyświetlać"imie: Nazwisko:..."
+///dodać abstrakcyjną klasę telefon, która będzie używać klasy książka telefoniczna
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()

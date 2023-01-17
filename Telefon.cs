@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ksiazkaTelefoniczna
 {
-    internal class Telefon
+    abstract class Telefon
     {
+        string Producent;
+        string Model;
     }
 }
