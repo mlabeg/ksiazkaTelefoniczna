@@ -35,13 +35,13 @@ namespace ksiazkaTelefoniczna
         }
         public override bool edytujKontakt()
         {
-            StringBuilder[] dane = new StringBuilder[8];
+            StringBuilder[] dane = new StringBuilder[5];
 
             dane[0] = new StringBuilder(this.Nazwa);
             dane[1] = new StringBuilder(this.Imie);
-            dane[3] = new StringBuilder(this.Nazwisko);
-            dane[4] = new StringBuilder(this.Numer);
-            dane[5] = new StringBuilder(this.Email);
+            dane[2] = new StringBuilder(this.Nazwisko);
+            dane[3] = new StringBuilder(this.Numer);
+            dane[4] = new StringBuilder(this.Email);
 
             return (edytuj(dane));
         }
@@ -84,7 +84,6 @@ namespace ksiazkaTelefoniczna
                 Console.SetCursorPosition(dane[wybor].Length + 15, wybor);
                 Console.Write("|");
 
-                // Wait for the user to press a key
                 key = Console.ReadKey(true);
 
                 if (key.Key == ConsoleKey.Escape) break;

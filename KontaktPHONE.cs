@@ -79,10 +79,6 @@ namespace ksiazkaTelefoniczna
                 {
                     Console.SetCursorPosition(20, i);
                     Console.WriteLine(dane[i].ToString());
-                    //tu wyrzuca błąd 
-                        //wygląda jakby do funkcji przekazywał tylko dane z kontakt
-                            //sprawdź czy przy tworzeniu kokntaktu nie dodała Ci się same pola klasy bazowej
-                            //bo zmieniałeś konstruktor, żeby dodawać obiekty z main()
                 }
 
                 if (!regexCheckNazwa)

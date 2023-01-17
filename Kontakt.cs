@@ -61,13 +61,38 @@ namespace ksiazkaTelefoniczna
 
         public virtual bool dodajKontakt()
         {
-            StringBuilder[] dane = new StringBuilder[5];
-            for (int i = 0; i < 5; i++)
+            StringBuilder[] dane = new StringBuilder[2];
+            for (int i = 0; i < 2; i++)
             {
                 dane[i] = new StringBuilder();
             }
+            return edytuj(dane);
+            
+        }
+        public virtual bool edytujKontakt() {
 
-            // Index of the current string being edited
+            StringBuilder[] dane = new StringBuilder[2];
+            dane[0] = new StringBuilder(this.Nazwa);
+            dane[1] = new StringBuilder(this.Numer);
+         
+            return edytuj(dane);
+        }
+
+        public virtual void wyswietl()
+        {
+            Console.Clear();
+            int wiersz = 0;
+            Console.Write("Nazwa: ");
+            Console.SetCursorPosition(10, wiersz++);
+            Console.WriteLine($"{Nazwa}    ");
+
+            Console.WriteLine("Numer: ");
+            Console.SetCursorPosition(10, wiersz++);
+            Console.WriteLine($"{Numer}  ");
+        }
+
+        protected virtual bool edytuj(StringBuilder[] dane)
+        {
             int wybor = 0;
             bool regexCheckNazwa = true;
             bool regexCheckNumer = true;
@@ -155,29 +180,6 @@ namespace ksiazkaTelefoniczna
                 this.Numer = dane[1].ToString();
                 return true;
             }
-            return false;
-        }
-        public virtual bool edytujKontakt() {
-            return true;
-        }
-
-        public virtual void wyswietl()
-        {
-            Console.Clear();
-            int wiersz = 0;
-            Console.Write("Nazwa: ");
-            Console.SetCursorPosition(10, wiersz++);
-            Console.WriteLine($"{Nazwa}    ");
-
-            Console.WriteLine("Numer: ");
-            Console.SetCursorPosition(10, wiersz++);
-            Console.WriteLine($"{Numer}  ");
-        }
-
-        protected virtual bool edytuj(StringBuilder[] dane)
-        {
-            Console.WriteLine("Edytuj w Kontakt.cs");
-            Console.ReadKey();
             return false;
         }
         internal virtual void zadzwon()
