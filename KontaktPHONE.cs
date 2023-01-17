@@ -19,8 +19,9 @@ namespace ksiazkaTelefoniczna
         internal KontaktPHONE() { }
         internal KontaktPHONE(string nazwa, string numer) : base(nazwa, numer) { }
 
-        internal string drugieImie { get; }
-        internal string firma { get; }
+        internal string drugieImie { get { return DrugieImie; } }
+        internal string firma { get { return Firma; } }
+        
         //internal string urodziny { get { return Urodziny.ToString(); } }
 
         string numerSluzbowy { get; }
@@ -37,16 +38,16 @@ namespace ksiazkaTelefoniczna
         }
         public override bool edytujKontakt()
         {
-            StringBuilder[] dane = new StringBuilder[7];
+            StringBuilder[] dane = new StringBuilder[8];
 
-            dane[0] = new StringBuilder(this.nazwa);
-            dane[1] = new StringBuilder(this.imie);
-            dane[2] = new StringBuilder(this.drugieImie);
-            dane[3] = new StringBuilder(this.nazwisko);
-            dane[4] = new StringBuilder(this.numer);
-            dane[5] = new StringBuilder(this.email);
-            dane[6] = new StringBuilder(this.firma);
-            dane[7] = new StringBuilder(this.numerSluzbowy);
+            dane[0] = new StringBuilder(this.Nazwa);
+            dane[1] = new StringBuilder(this.Imie);
+            dane[2] = new StringBuilder(this.DrugieImie);
+            dane[3] = new StringBuilder(this.Nazwisko);
+            dane[4] = new StringBuilder(this.Numer);
+            dane[5] = new StringBuilder(this.Email);
+            dane[6] = new StringBuilder(this.Firma);
+            dane[7] = new StringBuilder(this.NumerSluzbowy);
 
             return(edytuj(dane));
         }
@@ -170,15 +171,58 @@ namespace ksiazkaTelefoniczna
         public override void wyswietl()
         {
             Console.Clear();
+            int wiersz = 0;
+            Console.Write("Nazwa: ");
+            Console.SetCursorPosition(20, wiersz++);
             Console.WriteLine($"{Nazwa}    ");
-            if (Imie != null) Console.WriteLine($"{Imie}   ");
-            if (DrugieImie != null) Console.WriteLine($"{DrugieImie}   ");
-            if (Nazwisko != null) Console.WriteLine($"{Nazwisko}   ");
+
+            if (Imie.Length != 0)
+            {
+                Console.WriteLine("Imię: ");
+                Console.SetCursorPosition(20, wiersz++);
+                Console.WriteLine($"{Imie}   ");
+            }
+            if (DrugieImie.Length != 0)
+            {
+                Console.WriteLine("Drugie imię: ");
+                Console.SetCursorPosition(20, wiersz++);
+                Console.WriteLine($"{DrugieImie}   ");
+            }
+
+            if (Nazwisko.Length != 0)
+            {
+                Console.WriteLine("Nazwisko: ");
+                Console.SetCursorPosition(20, wiersz++);
+                Console.WriteLine($"{Nazwisko}   ");
+            }
+
+            Console.WriteLine("Numer: ");
+            Console.SetCursorPosition(20, wiersz++);
             Console.WriteLine($"{Numer}  ");
-            if (Email != null) Console.WriteLine($"{Email}  ");
-            if (Firma != null) Console.WriteLine($"{Firma}   ");
-            if (NumerSluzbowy != null) Console.WriteLine($"{NumerSluzbowy}   ");
-            Console.ReadKey();
+
+            if (Email != null)
+            {
+                Console.WriteLine("Email: ");
+                Console.SetCursorPosition(20, wiersz++);
+                Console.WriteLine($"{Email}  ");
+            }
+
+            if (Firma != null)
+            {
+                Console.WriteLine("Email: ");
+                Console.SetCursorPosition(20, wiersz++);
+                Console.WriteLine($"{Firma}  ");
+            }
+
+            if (NumerSluzbowy != null)
+            {
+                Console.WriteLine("Email: ");
+                Console.SetCursorPosition(20, wiersz++);
+                Console.WriteLine($"{NumerSluzbowy}  ");
+            }
+
+            Console.ReadKey(); 
+           
         }
         internal override void zadzwon()
         {
@@ -208,4 +252,3 @@ namespace ksiazkaTelefoniczna
         }
     }
 }
-

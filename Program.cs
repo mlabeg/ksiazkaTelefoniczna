@@ -78,12 +78,12 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///MENU: dodaj kontakt; wyświetl wszystkie;...  <- przemyśl jak to ma wyglądać 
-///rozbudowa menu wyświetl -> edytuj
-///
+///MENU: dodaj kontakt; wyświetl wszystkie, szukaj, ostatnio wybierane, ulubione;...  <- przemyśl jak to ma wyglądać 
+///ułożenie listy kontaktów alfabetycznie
 ///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
 ///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
-///
+//////
+///w wyświetlaniu pełnych informacji wyświetlać"imie: Nazwisko:..."
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
@@ -97,14 +97,20 @@ namespace ksiazkaTelefoniczna
 //////jakiej klasy jest zmienna i dla SIM nie wyświetlać "Wyswietl pelne dane"
 
 
+
+
 ///POPRAWKI:
 ///polskie znaki w całym projekcie
 ///usun funkcje, ktrych nie używasz 
 ///narysować graf UML
 ///
 ///
+
+
+
+
 //tak napisać funkcję zadzwoń(), żeby używała obiektu innego kontaktu??
-//wg wykładu 7. (8. zjazd)  ??? pomyśl czy to wgl ma sens i czy już tego nie zrobiłeś??
+////wg wykładu 7. (8. zjazd)  ??? pomyśl czy to wgl ma sens i czy już tego nie zrobiłeś??
 
 
 ///DECYZJE:

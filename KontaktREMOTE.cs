@@ -30,7 +30,23 @@ namespace ksiazkaTelefoniczna
             {
                 dane[i] = new StringBuilder();
             }
+            return (edytuj(dane));
 
+        }
+        public override bool edytujKontakt()
+        {
+            StringBuilder[] dane = new StringBuilder[8];
+
+            dane[0] = new StringBuilder(this.Nazwa);
+            dane[1] = new StringBuilder(this.Imie);
+            dane[3] = new StringBuilder(this.Nazwisko);
+            dane[4] = new StringBuilder(this.Numer);
+            dane[5] = new StringBuilder(this.Email);
+
+            return (edytuj(dane));
+        }
+        protected override bool edytuj(StringBuilder[] dane)
+        {
             // Index of the current string being edited
             int wybor = 0;
             bool regexCheckNazwa = true;
@@ -49,7 +65,7 @@ namespace ksiazkaTelefoniczna
                 for (int i = 0; i < 5; i++)
                 {
                     Console.SetCursorPosition(15, i);
-
+                    if (dane[i]!=null)
                     Console.WriteLine(dane[i].ToString());
                 }
                 if (!regexCheckNazwa)
@@ -128,26 +144,40 @@ namespace ksiazkaTelefoniczna
             }
             return false;
         }
-        public override bool edytujKontakt() {
-            return true;
-        }
-        protected override bool edytuj(StringBuilder[] dane)
-        {
-            Console.WriteLine("Edytuj w KontaktREMOTE.cs");
-            Console.ReadKey();
-            return false;
-        }
-
-
 
         public override void wyswietl()
         {
             Console.Clear();
+            int wiersz = 0;
+            Console.Write("Nazwa: ");
+            Console.SetCursorPosition(15, wiersz++);
             Console.WriteLine($"{Nazwa}    ");
-            if (Imie != null) Console.WriteLine($"{Imie}   ");
-            if (Nazwisko != null) Console.WriteLine($"{Nazwisko}   ");
+
+            if (Imie.Length != 0)
+            {
+                Console.WriteLine("Imie: ");
+                Console.SetCursorPosition(15, wiersz++);
+                Console.WriteLine($"{Imie}   ");
+            }
+            
+            if (Nazwisko.Length != 0)
+            {
+                Console.WriteLine("Nazwisko: ");
+                Console.SetCursorPosition(15, wiersz++);
+                Console.WriteLine($"{Nazwisko}   ");
+            }
+
+            Console.WriteLine("Numer: ");
+            Console.SetCursorPosition(15, wiersz++);
             Console.WriteLine($"{Numer}  ");
-            if (Email != null) Console.WriteLine($"{Email}  ");
+
+            if (Email != null)
+            {
+                Console.WriteLine("Email: ");
+                Console.SetCursorPosition(15, wiersz++);
+                Console.WriteLine($"{Email}  ");
+            }
+
             Console.ReadKey();
 
         }

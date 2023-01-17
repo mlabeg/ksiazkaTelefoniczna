@@ -164,9 +164,14 @@ namespace ksiazkaTelefoniczna
         public virtual void wyswietl()
         {
             Console.Clear();
-            Console.WriteLine($"{Nazwa}");
-            Console.WriteLine($"{Numer}");
-            Console.ReadKey();
+            int wiersz = 0;
+            Console.Write("Nazwa: ");
+            Console.SetCursorPosition(10, wiersz++);
+            Console.WriteLine($"{Nazwa}    ");
+
+            Console.WriteLine("Numer: ");
+            Console.SetCursorPosition(10, wiersz++);
+            Console.WriteLine($"{Numer}  ");
         }
 
         protected virtual bool edytuj(StringBuilder[] dane)
