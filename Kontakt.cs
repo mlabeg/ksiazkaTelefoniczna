@@ -198,6 +198,14 @@ namespace ksiazkaTelefoniczna
                 Thread.Sleep(1000);
             }
         }
+        public static bool operator <(Kontakt a, Kontakt b)
+        {
+            return string.Compare(a.Nazwa, b.Nazwa) < 0;
+        }
+        public static bool operator >(Kontakt a, Kontakt b)
+        {
+            return string.Compare(a.Nazwa, b.Nazwa) > 0;
+        }
     }
 }
     

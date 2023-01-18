@@ -168,15 +168,8 @@ namespace ksiazkaTelefoniczna
                 Console.WriteLine("Brak pozycji do wyswietlenia!");
                 Console.ReadKey();
             }
-           
-
         }
-        /// <summary>
-        /// TODO:
-        /// rozbudowanie metody wyswietlWszystkieKontakty() o "zadzwoń" "wyświeet szczegóły"
-        /// "edytuj", "usun", anuluj
-        /// </summary>
-        /// <returns></returns>
+        
         private int menuKontaktow()
             //nie ruszaj tej metody, jest używana równie przez metodę usun()
         //zastanawiam się czy jest możliwość, żeby menuKkontaktow() wywoływać tylko raz, nie za każdym razem jak wywołamy jakąś nadrzędną fukcję
@@ -275,18 +268,6 @@ namespace ksiazkaTelefoniczna
         /// można pobawić się w wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr
         /// nie wiem tylko jak wyjść z takiej...    -> Console.ReadKey()==Key.DownArrow;...
         /// </summary>
-        /*public void numerze()
-        {
-            char znak;
-            string szukanyNumer;
-            Console.Write("Podaj numer: ");
-            do
-            {
-                znak = Console.Read();
-            } while (znak != 0);
-            
-        }*/
-
         public void poNazwie()
         {
             Console.Write("Podaj szukany kontakt: ");

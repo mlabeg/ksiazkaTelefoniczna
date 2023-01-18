@@ -6,22 +6,32 @@ using System.Threading.Tasks;
 
 namespace ksiazkaTelefoniczna
 {
-    abstract class Telefon
+     abstract class Telefon
     {
-        string Producent;
-        string Model;
-        Telefon(){
+        protected string Producent;
+        protected string Model;
+        protected Telefon(){
             KsiazkaTelefoniczna ksiazkaTelefoniczna=new KsiazkaTelefoniczna();
         }
     }
     
-    class Xiaomi:Telefon{
-           Xiaomi(){
-               base();
-               this.Producent="Xiaomi";   
+    class Siajomi:Telefon{
+           Siajomi(): base(){
+               this.Producent="Siajomi";   
            }
-        Xiaomi(string nazwa){
-            Xiaomi();
+        Siajomi(string nazwa):this(){
+            this.Model=nazwa;
+        }
+    }
+
+    class Epyl:Telefon
+    {
+        Epyl() : base()
+        {
+            this.Producent = "Epyl";
+        }
+        Epyl(string nazwa) : this()
+        {
             this.Model=nazwa;
         }
     }
