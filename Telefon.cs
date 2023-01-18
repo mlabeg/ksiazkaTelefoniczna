@@ -10,5 +10,19 @@ namespace ksiazkaTelefoniczna
     {
         string Producent;
         string Model;
+        Telefon(){
+            KsiazkaTelefoniczna ksiazkaTelefoniczna=new KsiazkaTelefoniczna();
+        }
+    }
+    
+    class Xiaomi:Telefon{
+           Xiaomi(){
+               base();
+               this.Producent="Xiaomi";   
+           }
+        Xiaomi(string nazwa){
+            Xiaomi();
+            this.Model=nazwa;
+        }
     }
 }
