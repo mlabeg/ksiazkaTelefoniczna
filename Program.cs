@@ -78,13 +78,14 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///MENU: dodaj kontakt; wyświetl wszystkie, szukaj, ostatnio wybierane, ulubione;...  <- przemyśl jak to ma wyglądać 
+///MENU: dodaj kontakt; wyświetl wszystkie, szukaj, ostatnio wybierane, ulubione;...  <- tak to ma wyglądać 
 ///ułożenie listy kontaktów alfabetycznie
 ///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
 ///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
 //////
 ///w wyświetlaniu pełnych informacji wyświetlać"imie: Nazwisko:..."
 ///dodać abstrakcyjną klasę telefon, która będzie używać klasy książka telefoniczna
+///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
