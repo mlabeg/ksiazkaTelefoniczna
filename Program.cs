@@ -14,7 +14,7 @@ namespace ksiazkaTelefoniczna
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            menu.Konfiguruj(new string[] { " Dodaj kontakt", " Wyswietl wszystkie kontakty", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
+            menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów","Ostatno wybierane","Ulubione", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
              ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
             Kontakt kontakt = new KontaktPHONE("mordo", "468");
@@ -46,24 +46,25 @@ namespace ksiazkaTelefoniczna
                         ksiazkaTelefoniczna.wyswietlWszystkieKontakty();
                         break;
 
-                    case 2:
-                        ksiazkaTelefoniczna.poNazwie();
-
-                  
+                    case 2:  
                         break;
-
                     case 3:
-                        ksiazkaTelefoniczna.poNumerze();
-
-
                         break;
 
                     case 4:
+                        ksiazkaTelefoniczna.poNazwie();
+                        break;
+
+                    case 5:
+                        ksiazkaTelefoniczna.poNumerze();
+                        break;
+
+                    case 6:
                         ksiazkaTelefoniczna.usunKontakt();
                         break;
 
                     case -1:
-                    case 5:
+                    case 7:
                         ksiazkaTelefoniczna.exit();
                         break;
 
@@ -79,19 +80,22 @@ namespace ksiazkaTelefoniczna
 
 ///TODO:
 ///MENU: dodaj kontakt; wyświetl wszystkie, szukaj, ostatnio wybierane, ulubione;...  <- tak to ma wyglądać 
-///ułożenie listy kontaktów alfabetycznie
 ///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
 ///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
-//////
+///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
 ///w wyświetlaniu pełnych informacji wyświetlać"imie: Nazwisko:..."
 ///dodać abstrakcyjną klasę telefon, która będzie używać klasy książka telefoniczna
 ///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
+///zapisywanie i odczyt z pliku
+///
+
+
+/// TODO3:
 ///pole urodziny w KontaktyURZADZENIE
 ////wyświetlanie kto ma dzisiaj urodziny pod głównym menu
-///zapisywanie i odczyt z pliku
 ///"USTAWIENIA" gdzie możn zmienić jak wyswietać "wyświetlanie wszystkich kotaktów" t
 ////tj. "po imieniu"/"po nazwisku"...
 ///@Menu można dodać tu sprawdzanie najdłuższej nazwy kontaktu i wyświetlenie tego menu odpowiednio dalej

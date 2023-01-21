@@ -13,56 +13,8 @@ namespace ksiazkaTelefoniczna
     {
         List<Kontakt> kontaktList = new List<Kontakt>();
 
-        public void podajKontakt()
-        {
-            string numer;
-            string nazwa;
-
-            do
-            {
-                Console.WriteLine("Podaj nazwe: ");
-                nazwa = Console.ReadLine();
-            } while (!regexNazwa(nazwa));
-
-            do
-            {
-                Console.Write("Podaj numer telefonu: ");
-                numer = Console.ReadLine();
-            } while (!regexNumer(numer));
-
-            kontaktList.Add(new Kontakt(nazwa, numer));
-            Console.WriteLine($"Pomyslnie dodano kontakt {nazwa}");
-        }
-        private bool regexNazwa(string nazwa)
-        {
-            Regex regexNazwa = new Regex(@"(\w){3,}");
-            if (!regexNazwa.IsMatch(nazwa))
-            {
-                Console.WriteLine("Nieprawidlowa nazwa.");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private bool regexNumer(string numer)
-        {
-            Regex regexNumer = new Regex(@"(\d){9,12}");
-            if (!regexNumer.IsMatch(numer))
-            {
-                Console.WriteLine("Nieprawidlowy numer.");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
-        }
-
-        public void dodaj()
+       
+        public void dodaj()//tej funkcji używasz w Program
         {
             Kontakt nowy;
             Console.WriteLine("Gdzie zapiac kontakt? ");
@@ -113,7 +65,7 @@ namespace ksiazkaTelefoniczna
                     default:
                         break;
                  }
-           
+            kontaktList.Sort((x,y)=>x.nazwa.CompareTo(y.nazwa));
 
         }
 
@@ -230,23 +182,6 @@ namespace ksiazkaTelefoniczna
             Console.ReadKey();
         }*/
 
-
-        public void wyswietlPoNumerze(string numer)
-        {
-            bool czyJest = false;
-            foreach (Kontakt kontakt in kontaktList)
-            {
-                if (kontakt.numer == numer)
-                {
-                    wyswietlKontakt(kontakt);
-                    czyJest = true;
-                }
-            }
-            if (!czyJest)
-            {
-                Console.WriteLine("Nie znaleziono w bazie!");
-            }
-        }
         public void poNumerze()
         {
             Console.Write("Podaj numer: ");
@@ -259,7 +194,6 @@ namespace ksiazkaTelefoniczna
             else
             {
                 wyswietlKontakt(kontakt);
-                //Console.WriteLine($"Kontakt: {kontakt.nazwa}, {kontakt.numer}")  ;
 
             }
         }
@@ -275,24 +209,6 @@ namespace ksiazkaTelefoniczna
             var pasujaceKontakty = kontaktList.Where(e => e.nazwa.Contains(szukanaFraza)).ToList();
 
             wyswietlKontakty(pasujaceKontakty);
-        }
-
-
-        public void wyswietlPoNazwie(string nazwa)
-        {
-            bool czyJest = false;
-            foreach (Kontakt kontakt in kontaktList)
-            {
-                if (kontakt.nazwa == nazwa)
-                {
-                    Console.WriteLine(kontakt.numer + " " + kontakt.nazwa);
-                    czyJest = true;
-                }
-            }
-            if (!czyJest)
-            {
-                Console.WriteLine("Nie znaleziono w bazie!");
-            }
         }
 
         public void exit()
@@ -319,5 +235,6 @@ namespace ksiazkaTelefoniczna
             
            
         }
+
     }
 }

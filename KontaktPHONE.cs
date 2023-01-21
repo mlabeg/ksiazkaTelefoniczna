@@ -172,20 +172,20 @@ namespace ksiazkaTelefoniczna
             Console.SetCursorPosition(20, wiersz++);
             Console.WriteLine($"{Nazwa}    ");
 
-            if (Imie.Length != 0)
+            if ( Imie!=null && Imie.Length != 0)
             {
                 Console.WriteLine("Imię: ");
                 Console.SetCursorPosition(20, wiersz++);
                 Console.WriteLine($"{Imie}   ");
             }
-            if (DrugieImie.Length != 0)
+            if (DrugieImie!=null && DrugieImie.Length != 0)
             {
                 Console.WriteLine("Drugie imię: ");
                 Console.SetCursorPosition(20, wiersz++);
                 Console.WriteLine($"{DrugieImie}   ");
             }
 
-            if (Nazwisko.Length != 0)
+            if (Nazwisko != null && Nazwisko.Length != 0)
             {
                 Console.WriteLine("Nazwisko: ");
                 Console.SetCursorPosition(20, wiersz++);
@@ -205,14 +205,14 @@ namespace ksiazkaTelefoniczna
 
             if (Firma != null)
             {
-                Console.WriteLine("Email: ");
+                Console.WriteLine("Firma: ");
                 Console.SetCursorPosition(20, wiersz++);
                 Console.WriteLine($"{Firma}  ");
             }
 
-            if (NumerSluzbowy != null)
+            if (NumerSluzbowy != null && NumerSluzbowy.Length != 0)
             {
-                Console.WriteLine("Email: ");
+                Console.WriteLine("Numer służbowy: ");
                 Console.SetCursorPosition(20, wiersz++);
                 Console.WriteLine($"{NumerSluzbowy}  ");
             }
