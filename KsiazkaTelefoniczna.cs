@@ -12,7 +12,6 @@ namespace ksiazkaTelefoniczna
     class KsiazkaTelefoniczna
     {
         List<Kontakt> kontaktList = new List<Kontakt>();
-
        
         public void dodaj()//tej funkcji używasz w Program
         {
@@ -236,5 +235,14 @@ namespace ksiazkaTelefoniczna
            
         }
 
+        internal void ostatnioWybierane()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ulubione()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

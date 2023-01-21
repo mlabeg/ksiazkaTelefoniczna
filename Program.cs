@@ -46,9 +46,11 @@ namespace ksiazkaTelefoniczna
                         ksiazkaTelefoniczna.wyswietlWszystkieKontakty();
                         break;
 
-                    case 2:  
+                    case 2:
+                        ksiazkaTelefoniczna.ostatnioWybierane();
                         break;
                     case 3:
+                        ksiazkaTelefoniczna.ulubione();
                         break;
 
                     case 4:
@@ -73,7 +75,7 @@ namespace ksiazkaTelefoniczna
                         break;
                 }
 
-            } while (!(zadanie == -1 || zadanie == 5));
+            } while (!(zadanie == -1 || zadanie == 7));
         }
     }
 }

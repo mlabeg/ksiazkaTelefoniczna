@@ -19,6 +19,7 @@ namespace ksiazkaTelefoniczna
     {
         protected string Nazwa;
         protected string Numer;
+        int licznikPolaczen;
 
         internal string nazwa { get { return Nazwa; } }
         internal string numer { get { return Numer; } }
@@ -29,6 +30,7 @@ namespace ksiazkaTelefoniczna
         {
             Nazwa = nazwa;
             Numer = numer;
+            licznikPolaczen = 0;
         }
 
 
@@ -185,6 +187,7 @@ namespace ksiazkaTelefoniczna
         }
         internal virtual void zadzwon()
         {
+            licznikPolaczen++;
             Console.Clear();
             Console.WriteLine($"Dzwonię do {nazwa}");
             Console.WriteLine(numer);
@@ -200,7 +203,7 @@ namespace ksiazkaTelefoniczna
             }
         }
         
-        public static bool operator <(Kontakt a, Kontakt b)
+        public static bool operator <(Kontakt a, Kontakt b)//sprawdź czy tego używasz
         {
             return string.Compare(a.Nazwa, b.Nazwa) < 0;
         }
