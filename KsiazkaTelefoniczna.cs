@@ -12,6 +12,8 @@ namespace ksiazkaTelefoniczna
     class KsiazkaTelefoniczna
     {
         List<Kontakt> kontaktList = new List<Kontakt>();
+        OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
+        List<Kontakt> ulubioneKontakty;
        
         public void dodaj()//tej funkcji używasz w Program
         {
@@ -142,9 +144,7 @@ namespace ksiazkaTelefoniczna
         private void szczegoly(int wybrany)
         {
             Menu szczegoly=new Menu();
-          //  kontaktList[wybrany].
-          ///Co ja tutaj chciałem zrobić?
-
+          
             szczegoly.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
                
             int wyswietl=szczegoly.Wyswietl(wybrany);
@@ -153,7 +153,9 @@ namespace ksiazkaTelefoniczna
                 switch (wyswietl)
                 {
                     case 0:
+                        //zadzwon(kontaktList[wybrany]);
                         kontaktList[wybrany].zadzwon();
+                        ostatnioWybrane.dodajPolaczenie(kontaktList[wybrany]);
                         break;
                     case 1:
                         kontaktList[wybrany].wyswietl();
@@ -171,14 +173,10 @@ namespace ksiazkaTelefoniczna
 
         }
 
-        /*private void zadzwon()
+       /* private void zadzwon(Kontakt kontakt)
         {
-            Console.Clear();
-            Console.WriteLine($"Dzwonię do {nazwa}");
-            Console.WriteLine(numer);
-            Console.WriteLine();
-            Console.WriteLine("Naciśnij dowoly przycisk, aby zakończyć połączenie.");
-            Console.ReadKey();
+            kontakt.zadzwon();
+            ostatnioWybrane.dodajPolaczenie(kontakt);
         }*/
 
         public void poNumerze()
@@ -237,10 +235,17 @@ namespace ksiazkaTelefoniczna
 
         internal void ostatnioWybierane()
         {
-            throw new NotImplementedException();
+            if (!ostatnioWybrane.czyPuste()) ostatnioWybrane.menuOstatnioWybrane();
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Brak pozycji do wyświetlenia!");
+                Console.ReadKey();
+            }
         }
 
         internal void ulubione()
+            //pomyśleć czy nie zrobić z tego klasy
         {
             throw new NotImplementedException();
         }

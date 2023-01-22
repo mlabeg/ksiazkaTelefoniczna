@@ -10,7 +10,7 @@ namespace ksiazkaTelefoniczna
     {
         protected string Producent;
         protected string Model;
-        protected Telefon(){
+        public Telefon(){
             KsiazkaTelefoniczna ksiazkaTelefoniczna=new KsiazkaTelefoniczna();
         }
     }

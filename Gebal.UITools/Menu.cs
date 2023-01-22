@@ -119,7 +119,6 @@ namespace Gebal.UITools
 
                 do
                 {
-
                     ///TODO:
                     ///można dodać tu sprawdzanie najdłuższej nazwy kontaktu i wyświetlenie tego menu odpowiednio dalej
                     for (int i = 0; i < elementy.Length; i++)

@@ -50,6 +50,9 @@
     <Compile Include="KontaktPHONE.cs" />
     <Compile Include="KontaktREMOTE.cs" />
     <Compile Include="KsiazkaTelefoniczna.cs" />
+    <Compile Include="listaTel.cs" />
+    <Compile Include="OstatnioWybrane.cs" />
+    <Compile Include="Polaczenie.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Telefon.cs" />

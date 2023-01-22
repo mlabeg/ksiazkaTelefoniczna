@@ -201,6 +201,7 @@ namespace ksiazkaTelefoniczna
                 Console.WriteLine("DRYŃ, DRYŃ");
                 Thread.Sleep(1000);
             }
+                       
         }
         
         public static bool operator <(Kontakt a, Kontakt b)//sprawdź czy tego używasz

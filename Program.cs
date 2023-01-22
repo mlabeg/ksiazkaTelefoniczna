@@ -14,7 +14,7 @@ namespace ksiazkaTelefoniczna
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów","Ostatno wybierane","Ulubione", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
+            menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów"," Ostatno wybierane"," Ulubione", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
              ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
             Kontakt kontakt = new KontaktPHONE("mordo", "468");
@@ -81,18 +81,18 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///MENU: dodaj kontakt; wyświetl wszystkie, szukaj, ostatnio wybierane, ulubione;...  <- tak to ma wyglądać 
+///kolor "Zadzwoń" @ostatnioWybierane
 ///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
 ///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
 ///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
-///w wyświetlaniu pełnych informacji wyświetlać"imie: Nazwisko:..."
 ///dodać abstrakcyjną klasę telefon, która będzie używać klasy książka telefoniczna
 ///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
+
 
 ///TODO2:
 ///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
 ///zapisywanie i odczyt z pliku
-///
+///opcja "zadzwoń" bezpośrednio w menu -> dzwoni i zapisuje numer w historii
 
 
 /// TODO3:
