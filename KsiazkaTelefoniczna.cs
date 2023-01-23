@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace ksiazkaTelefoniczna
 {
-    class KsiazkaTelefoniczna
+    class KsiazkaTelefoniczna:listaTel
     {
-        List<Kontakt> kontaktList = new List<Kontakt>();
-        OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
+        //List<Kontakt> kontaktList = new List<Kontakt>();
+       // OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
         Ulubione ulubione = new Ulubione();
                
         public void dodaj()//tej funkcji używasz w Program
@@ -121,7 +121,7 @@ namespace ksiazkaTelefoniczna
             }
         }
         
-        private int menuKontaktow()
+       /* private int menuKontaktow()
             //nie ruszaj tej metody, jest używana równie przez metodę usun()
         //zastanawiam się czy jest możliwość, żeby menuKkontaktow() wywoływać tylko raz, nie za każdym razem jak wywołamy jakąś nadrzędną fukcję
         //żeby była to "właściwość klasy", a nie danej funkcji //<- właśnie wydaje mi się,
@@ -137,9 +137,9 @@ namespace ksiazkaTelefoniczna
                 Menu kontaktow = new Menu();
                 kontaktow.Konfiguruj(kontakty);
                 return kontaktow.Wyswietl();
-        }
+        }*/
                 
-        private void szczegoly(int wybrany)
+        /*private void szczegoly(int wybrany)
         {
             Menu szczegoly=new Menu();
           
@@ -170,7 +170,7 @@ namespace ksiazkaTelefoniczna
                 }
             }
 
-        }
+        }*/
 
        /* private void zadzwon(Kontakt kontakt)
         {
@@ -192,6 +192,7 @@ namespace ksiazkaTelefoniczna
                 wyswietlKontakt(kontakt);
 
             }
+            Console.ReadKey();
         }
         /// <summary>
         /// TODO:
@@ -200,9 +201,9 @@ namespace ksiazkaTelefoniczna
         /// </summary>
         public void poNazwie()
         {
-            Console.Write("Podaj szukany kontakt: ");
+            Console.Write("Wyszukaj: ");
             string szukanaFraza = Console.ReadLine();
-            var pasujaceKontakty = kontaktList.Where(e => e.nazwa.Contains(szukanaFraza)).ToList();
+            var pasujaceKontakty = kontaktList.Where(e => e.nazwa.Contains(szukanaFraza)|| e.numer.Contains(szukanaFraza)).ToList();
 
             wyswietlKontakty(pasujaceKontakty);
         }

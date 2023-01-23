@@ -9,9 +9,10 @@ namespace ksiazkaTelefoniczna
 {
     internal abstract class listaTel
     {
-        protected List<Kontakt> kontaktList = new List<Kontakt>();
+        protected static List<Kontakt> kontaktList = new List<Kontakt>();
+        protected static OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
 
-        private int menuKontaktow()
+        protected int menuKontaktow()
         //nie ruszaj tej metody, jest używana równie przez metodę usun()
         //zastanawiam się czy jest możliwość, żeby menuKkontaktow() wywoływać tylko raz, nie za każdym razem jak wywołamy jakąś nadrzędną fukcję
         //żeby była to "właściwość klasy", a nie danej funkcji //<- właśnie wydaje mi się,
@@ -29,7 +30,7 @@ namespace ksiazkaTelefoniczna
             return kontaktow.Wyswietl();
         }
 
-        private void szczegoly(int wybrany)
+        protected void szczegoly(int wybrany)
         {
             Menu szczegoly = new Menu();
 

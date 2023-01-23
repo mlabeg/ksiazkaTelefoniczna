@@ -81,11 +81,9 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///kolor "Zadzwoń" @ostatnioWybierane # do sprawdzenia
-///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
-///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
+///poprawić alorytm działania klasy ulubione (LYNQ?)
+///scal poNazwie & poNumerze => wyszukaj() @Program
 ///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
-///dodać abstrakcyjną klasę telefon, która będzie używać klasy książka telefoniczna
 ///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
 
 
@@ -111,6 +109,7 @@ namespace ksiazkaTelefoniczna
 ///polskie znaki w całym projekcie
 ///usun funkcje, ktrych nie używasz 
 ///narysować graf UML
+///ustaw odpowiedni rozmiar okna, tak, żeby widzieć "zadzwoń" w ostatnioWybierane
 ///
 ///
 

@@ -43,7 +43,8 @@ namespace ksiazkaTelefoniczna
                 {
                     Console.SetCursorPosition(49, wiersz);
                     Console.BackgroundColor = ConsoleColor.Blue;
-                    Console.Write("Zadzwoń");//sprawdzić w jakim kolorze się wyświeli
+                    Console.Write("Zadzwoń".PadRight(8).PadLeft(9));//sprawdzić w jakim kolorze się wyświeli
+                    Console.ResetColor();
                     key = Console.ReadKey();
                     if (key.Key == ConsoleKey.Enter)
                     {
@@ -55,9 +56,12 @@ namespace ksiazkaTelefoniczna
                     {
                         key = new ConsoleKeyInfo();
                     }
+                    
                 }
-                else 
-                    break;
+                else
+                    
+                break;
+                //Console.ResetColor();
             } while (key.Key != ConsoleKey.Escape);
              
         }
