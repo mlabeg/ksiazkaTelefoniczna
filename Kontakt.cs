@@ -8,10 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace ksiazkaTelefoniczna
 {
@@ -19,10 +15,12 @@ namespace ksiazkaTelefoniczna
     {
         protected string Nazwa;
         protected string Numer;
-        int licznikPolaczen;
+        int LicznikPolaczen;
 
         internal string nazwa { get { return Nazwa; } }
         internal string numer { get { return Numer; } }
+
+        public int licznikPolaczen { get => LicznikPolaczen; }
 
         internal Kontakt() { }
 
@@ -30,7 +28,7 @@ namespace ksiazkaTelefoniczna
         {
             Nazwa = nazwa;
             Numer = numer;
-            licznikPolaczen = 0;
+            LicznikPolaczen = 0;
         }
 
 
@@ -187,7 +185,7 @@ namespace ksiazkaTelefoniczna
         }
         internal virtual void zadzwon()
         {
-            licznikPolaczen++;
+            LicznikPolaczen++;
             Console.Clear();
             Console.WriteLine($"Dzwonię do {nazwa}");
             Console.WriteLine(numer);

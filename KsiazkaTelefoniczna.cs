@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
 
 namespace ksiazkaTelefoniczna
 {
@@ -13,8 +11,8 @@ namespace ksiazkaTelefoniczna
     {
         List<Kontakt> kontaktList = new List<Kontakt>();
         OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
-        List<Kontakt> ulubioneKontakty;
-       
+        Ulubione ulubione = new Ulubione();
+               
         public void dodaj()//tej funkcji używasz w Program
         {
             Kontakt nowy;
@@ -156,6 +154,7 @@ namespace ksiazkaTelefoniczna
                         //zadzwon(kontaktList[wybrany]);
                         kontaktList[wybrany].zadzwon();
                         ostatnioWybrane.dodajPolaczenie(kontaktList[wybrany]);
+                        ulubione.dodaj(kontaktList[wybrany]);
                         break;
                     case 1:
                         kontaktList[wybrany].wyswietl();
@@ -244,8 +243,7 @@ namespace ksiazkaTelefoniczna
             }
         }
 
-        internal void ulubione()
-            //pomyśleć czy nie zrobić z tego klasy
+        internal void ulubioneKontakty()
         {
             throw new NotImplementedException();
         }

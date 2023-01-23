@@ -42,6 +42,7 @@ namespace ksiazkaTelefoniczna
                 if (wiersz >= 0)
                 {
                     Console.SetCursorPosition(49, wiersz);
+                    Console.BackgroundColor = ConsoleColor.Blue;
                     Console.Write("Zadzwoń");//sprawdzić w jakim kolorze się wyświeli
                     key = Console.ReadKey();
                     if (key.Key == ConsoleKey.Enter)

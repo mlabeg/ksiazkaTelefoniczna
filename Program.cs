@@ -50,7 +50,7 @@ namespace ksiazkaTelefoniczna
                         ksiazkaTelefoniczna.ostatnioWybierane();
                         break;
                     case 3:
-                        ksiazkaTelefoniczna.ulubione();
+                        ksiazkaTelefoniczna.ulubioneKontakty();
                         break;
 
                     case 4:
@@ -81,7 +81,7 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///kolor "Zadzwoń" @ostatnioWybierane
+///kolor "Zadzwoń" @ostatnioWybierane # do sprawdzenia
 ///lista posoortowana wg "najczęściej wybierane"+ "Ostatnio wybierane"
 ///dodać abstrakcyjną klasę lista(kontaktów?) po której książka telefoniczna będzie dziedziczyć
 ///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
