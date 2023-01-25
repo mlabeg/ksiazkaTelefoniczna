@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Gebal.UITools;//oprócz dodania tego tutaj należy również dodać to w zakładce "odwołania" w drzewie projektu
 
 
@@ -14,7 +10,7 @@ namespace ksiazkaTelefoniczna
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów"," Ostatno wybierane"," Ulubione", " Wyszukaj po nazwie", " Wyszukaj po numerze", " Usun kontakt", " Wyjscie" });
+            menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów"," Ostatno wybierane"," Ulubione kontakty", " Wyszukaj", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
              ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
             Kontakt kontakt = new KontaktPHONE("mordo", "468");
@@ -54,19 +50,15 @@ namespace ksiazkaTelefoniczna
                         break;
 
                     case 4:
-                        ksiazkaTelefoniczna.poNazwie();
+                        ksiazkaTelefoniczna.wyszukaj();
                         break;
 
                     case 5:
-                        ksiazkaTelefoniczna.poNumerze();
-                        break;
-
-                    case 6:
                         ksiazkaTelefoniczna.usunKontakt();
                         break;
 
                     case -1:
-                    case 7:
+                    case 6:
                         ksiazkaTelefoniczna.exit();
                         break;
 
@@ -75,14 +67,13 @@ namespace ksiazkaTelefoniczna
                         break;
                 }
 
-            } while (!(zadanie == -1 || zadanie == 7));
+            } while (!(zadanie == -1 || zadanie == 6));
         }
     }
 }
 
 ///TODO:
 ///poprawić alorytm działania klasy ulubione (LYNQ?)
-///scal poNazwie & poNumerze => wyszukaj() @Program
 ///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
 ///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
 

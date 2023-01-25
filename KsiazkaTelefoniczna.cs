@@ -87,10 +87,6 @@ namespace ksiazkaTelefoniczna
             }
         }
 
-        void wyswietlKontakt(Kontakt kontakt)
-        {
-            Console.WriteLine($"Kontakt: {kontakt.nazwa}, {kontakt.numer}");
-        }
         void wyswietlKontakty(List<Kontakt> kontakty)
         {
             if (kontakty.Count == 0)
@@ -101,7 +97,7 @@ namespace ksiazkaTelefoniczna
             {
                 foreach (Kontakt kontakt in kontakty)
                 {
-                    wyswietlKontakt(kontakt);
+                    Console.WriteLine($"Kontakt: {kontakt.nazwa}, {kontakt.numer}");
                 }
                 Console.ReadKey();
             }
@@ -178,28 +174,13 @@ namespace ksiazkaTelefoniczna
             ostatnioWybrane.dodajPolaczenie(kontakt);
         }*/
 
-        public void poNumerze()
-        {
-            Console.Write("Podaj numer: ");
-            string numer = Console.ReadLine();
-            var kontakt = kontaktList.FirstOrDefault(e => e.numer == numer);
-            if (kontakt == null)
-            {
-                Console.WriteLine("Nie znaleziono kontaktu!");
-            }
-            else
-            {
-                wyswietlKontakt(kontakt);
-
-            }
-            Console.ReadKey();
-        }
+       
         /// <summary>
         /// TODO:
         /// można pobawić się w wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr
         /// nie wiem tylko jak wyjść z takiej...    -> Console.ReadKey()==Key.DownArrow;...
         /// </summary>
-        public void poNazwie()
+        public void wyszukaj()
         {
             Console.Write("Wyszukaj: ");
             string szukanaFraza = Console.ReadLine();
