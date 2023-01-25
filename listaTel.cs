@@ -12,31 +12,30 @@ namespace ksiazkaTelefoniczna
         protected static List<Kontakt> kontaktList = new List<Kontakt>();
         protected static OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
 
+        protected static Ulubione ulubione = new Ulubione();
+
+        Menu kontaktow = new Menu();
+        Menu szczegolow = new Menu();
+        public listaTel()
+        {
+            szczegolow.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
+        }
+        
         protected int menuKontaktow()
-        //nie ruszaj tej metody, jest używana równie przez metodę usun()
-        //zastanawiam się czy jest możliwość, żeby menuKkontaktow() wywoływać tylko raz, nie za każdym razem jak wywołamy jakąś nadrzędną fukcję
-        //żeby była to "właściwość klasy", a nie danej funkcji //<- właśnie wydaje mi się,
-        ////że nie, bo o to chodzi w menu, że trzeba je wywołać za każdym razem
         {
             List<string> kontakty = new List<string>();
             for (int i = 0; i < kontaktList.Count; i++)
             {
                 kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
-
             }
 
-            Menu kontaktow = new Menu();
             kontaktow.Konfiguruj(kontakty);
             return kontaktow.Wyswietl();
         }
 
         protected void szczegoly(int wybrany)
         {
-            Menu szczegoly = new Menu();
-
-            szczegoly.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
-
-            int wyswietl = szczegoly.Wyswietl(wybrany);
+            int wyswietl = szczegolow.Wyswietl(wybrany);
             if (wyswietl >= 0)
             {
                 switch (wyswietl)
@@ -61,5 +60,6 @@ namespace ksiazkaTelefoniczna
             }
 
         }
+        public abstract void wyswietlWszystkie();
     }
 }

@@ -10,8 +10,9 @@ namespace ksiazkaTelefoniczna
     {
         protected string Producent;
         protected string Model;
-        public Telefon(){
-            KsiazkaTelefoniczna ksiazkaTelefoniczna=new KsiazkaTelefoniczna();
+        protected KsiazkaTelefoniczna ksiazkaTel;
+        public Telefon(){//KOMPOZYCJA razem z linią 31
+            KsiazkaTelefoniczna ksiazkaTel=new KsiazkaTelefoniczna();
         }
     }
     
@@ -21,6 +22,20 @@ namespace ksiazkaTelefoniczna
            }
         Siajomi(string nazwa):this(){
             this.Model=nazwa;
+        }
+
+        public void wyswietlDaneKontaktu(Kontakt kontakt)//ZALEŻNOŚĆ
+        {
+            Console.WriteLine($"Kontakt: {kontakt.nazwa}, {kontakt.numer}");
+        }
+
+        private void ResetDoUstawienFabrycznych()//KOMPOZYCJA razem z linią 14
+        {
+            ksiazkaTel = null;
+        }
+        void dodanoKontakt()//ASOCJACJA
+        {
+            ksiazkaTel.liczbaKontaktów++;
         }
     }
 

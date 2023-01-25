@@ -8,7 +8,7 @@ namespace ksiazkaTelefoniczna
 {
     internal class Polaczenie
     {
-        Kontakt kontakt;
+        Kontakt kontakt;//ASOCJACJA
         DateTime data;
         public Kontakt Kontakt { get { return kontakt; } }
 

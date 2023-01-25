@@ -23,29 +23,29 @@
   </Class>
   <Class Name="ksiazkaTelefoniczna.KsiazkaTelefoniczna">
     <Position X="3.75" Y="3.75" Width="2.25" />
+    <InheritanceLine Type="ksiazkaTelefoniczna.listaTel" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="3.517" />
+        <Point X="6.75" Y="5.12" />
+        <Point X="6.248" Y="5.12" />
+        <Point X="6.248" Y="5.322" />
+        <Point X="6" Y="5.322" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAIACAAAAAAAIAAAAAEBAAAFAEAwACAAAEA=</HashCode>
+      <HashCode>AAAAAABBAAIAAIAAAAAAAAAAAAEBAAABAEAwACAAAAA=</HashCode>
       <FileName>KsiazkaTelefoniczna.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="ulubione" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ksiazkaTelefoniczna.listaTel">
     <Position X="6" Y="1" Width="1.5" />
-    <AssociationLine Name="kontaktList" Type="ksiazkaTelefoniczna.Kontakt" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="7.5" Y="1.648" />
-        <Point X="10.75" Y="1.687" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="ostatnioWybrane" Type="ksiazkaTelefoniczna.OstatnioWybrane">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.139" Y="0.094" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAAABA=</HashCode>
+      <HashCode>AggAAABAAAAAAAAAAIAAAAAAAAAEAAAAAAAAAEAAAFA=</HashCode>
       <FileName>listaTel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -58,7 +58,7 @@
   <Class Name="ksiazkaTelefoniczna.OstatnioWybrane">
     <Position X="1" Y="1.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>BgAAAAAAAAAAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>BgAAAAABAAAAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>OstatnioWybrane.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -95,14 +95,14 @@
   <Class Name="ksiazkaTelefoniczna.Telefon">
     <Position X="16.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAQA=</HashCode>
       <FileName>Telefon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ksiazkaTelefoniczna.Siajomi">
     <Position X="14.5" Y="3" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAEAAIAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Telefon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -115,8 +115,15 @@
   </Class>
   <Class Name="ksiazkaTelefoniczna.Ulubione">
     <Position X="7.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="ksiazkaTelefoniczna.listaTel" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="3.517" />
+        <Point X="6.75" Y="5.125" />
+        <Point X="7.25" Y="5.125" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAACAAACA=</HashCode>
+      <HashCode>AAAAAABAAAAAAAEAAAAAAABAAAABAAAAAAAAACAAACA=</HashCode>
       <FileName>Ulubione.cs</FileName>
     </TypeIdentifier>
   </Class>

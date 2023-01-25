@@ -190,15 +190,17 @@ namespace ksiazkaTelefoniczna
             Console.WriteLine($"Dzwonię do {nazwa}");
             Console.WriteLine(numer);
 
-            for (int i = 0; i < 3; i++)
-            {
-                Console.SetCursorPosition(0, 4);
-                Console.WriteLine("             ");
-                Console.SetCursorPosition(0, 4);
-                Thread.Sleep(1000);
-                Console.WriteLine("DRYŃ, DRYŃ");
-                Thread.Sleep(1000);
-            }
+            /* for (int i = 0; i < 3; i++)
+             {
+                 Console.SetCursorPosition(0, 4);
+                 Console.WriteLine("             ");
+                 Console.SetCursorPosition(0, 4);
+                 Thread.Sleep(1000);
+                 Console.WriteLine("DRYŃ, DRYŃ");
+                 Thread.Sleep(1000);
+             }*/
+            Console.WriteLine("dzwonie");  
+                Console.ReadKey();
                        
         }
         

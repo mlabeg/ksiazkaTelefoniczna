@@ -12,16 +12,18 @@ namespace ksiazkaTelefoniczna
             Menu menu = new Menu();
             menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów"," Ostatno wybierane"," Ulubione kontakty", " Wyszukaj", " Usun kontakt", " Wyjscie" });
             KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
-             ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
+            Ulubione ulubione = new Ulubione();
+
+            ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
             Kontakt kontakt = new KontaktPHONE("mordo", "468");
             ksiazkaTelefoniczna.dodajViaConsole(kontakt);
             ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
        
-             /*ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
+             ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
               ksiazkaTelefoniczna.dodajKontakt("Jan", "147");
               ksiazkaTelefoniczna.dodajKontakt("Mama", "258");
               ksiazkaTelefoniczna.dodajKontakt("Tata", "369");
-              ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");*/
+              ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");
           
             int zadanie;
             do
@@ -39,14 +41,14 @@ namespace ksiazkaTelefoniczna
 
                     case 1:
                       
-                        ksiazkaTelefoniczna.wyswietlWszystkieKontakty();
+                        ksiazkaTelefoniczna.wyswietlWszystkie();
                         break;
 
                     case 2:
                         ksiazkaTelefoniczna.ostatnioWybierane();
                         break;
                     case 3:
-                        ksiazkaTelefoniczna.ulubioneKontakty();
+                        ulubione.wyswietlWszystkie();
                         break;
 
                     case 4:
@@ -73,13 +75,17 @@ namespace ksiazkaTelefoniczna
 }
 
 ///TODO:
-///poprawić alorytm działania klasy ulubione (LYNQ?)
-///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
+///poprawić alorytm działania klasy ulubione (LYNQ?)!!!
+///Zobaczyć relacje dla klasy Menu
+/// 
+
+///TODO1.5:
 ///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
 
 
 ///TODO2:
-///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr - poNumerze()
+///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
+///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr/liter @KsiazkaTelefoniczna
 ///zapisywanie i odczyt z pliku
 ///opcja "zadzwoń" bezpośrednio w menu -> dzwoni i zapisuje numer w historii
 

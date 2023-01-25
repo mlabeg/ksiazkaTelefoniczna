@@ -9,10 +9,9 @@ namespace ksiazkaTelefoniczna
 {
     class KsiazkaTelefoniczna:listaTel
     {
-        //List<Kontakt> kontaktList = new List<Kontakt>();
-       // OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
-        Ulubione ulubione = new Ulubione();
-               
+        public int liczbaKontaktów = 0;//potrzebne do asocjacji
+        public KsiazkaTelefoniczna() : base() { }
+                       
         public void dodaj()//tej funkcji używasz w Program
         {
             Kontakt nowy;
@@ -103,83 +102,13 @@ namespace ksiazkaTelefoniczna
             }
 
         }
-
-        public void wyswietlWszystkieKontakty()
-        {
-            if(kontaktList.Count != 0)
-            {
-                szczegoly(menuKontaktow());
-            }
-            else
-            {
-                Console.WriteLine("Brak pozycji do wyswietlenia!");
-                Console.ReadKey();
-            }
-        }
-        
-       /* private int menuKontaktow()
-            //nie ruszaj tej metody, jest używana równie przez metodę usun()
-        //zastanawiam się czy jest możliwość, żeby menuKkontaktow() wywoływać tylko raz, nie za każdym razem jak wywołamy jakąś nadrzędną fukcję
-        //żeby była to "właściwość klasy", a nie danej funkcji //<- właśnie wydaje mi się,
-        ////że nie, bo o to chodzi w menu, że trzeba je wywołać za każdym razem
-        {
-            List<string> kontakty = new List<string>();
-                for (int i = 0; i < kontaktList.Count; i++)
-                {
-                    kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
-
-                }
-
-                Menu kontaktow = new Menu();
-                kontaktow.Konfiguruj(kontakty);
-                return kontaktow.Wyswietl();
-        }*/
-                
-        /*private void szczegoly(int wybrany)
-        {
-            Menu szczegoly=new Menu();
-          
-            szczegoly.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
-               
-            int wyswietl=szczegoly.Wyswietl(wybrany);
-            if (wyswietl >= 0)
-            {
-                switch (wyswietl)
-                {
-                    case 0:
-                        //zadzwon(kontaktList[wybrany]);
-                        kontaktList[wybrany].zadzwon();
-                        ostatnioWybrane.dodajPolaczenie(kontaktList[wybrany]);
-                        ulubione.dodaj(kontaktList[wybrany]);
-                        break;
-                    case 1:
-                        kontaktList[wybrany].wyswietl();
-                        break;
-                    case 2:
-                        kontaktList[wybrany].edytujKontakt();
-                        break;
-                    case 3:
-                        kontaktList.RemoveAt(wybrany);
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-        }*/
-
+    
        /* private void zadzwon(Kontakt kontakt)
         {
             kontakt.zadzwon();
             ostatnioWybrane.dodajPolaczenie(kontakt);
         }*/
-
        
-        /// <summary>
-        /// TODO:
-        /// można pobawić się w wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr
-        /// nie wiem tylko jak wyjść z takiej...    -> Console.ReadKey()==Key.DownArrow;...
-        /// </summary>
         public void wyszukaj()
         {
             Console.Write("Wyszukaj: ");
@@ -227,7 +156,19 @@ namespace ksiazkaTelefoniczna
 
         internal void ulubioneKontakty()
         {
-            throw new NotImplementedException();
+            ulubione.wyswietlWszystkie();
+        }
+        public override void wyswietlWszystkie()
+        {
+            if (kontaktList.Count != 0)
+            {
+                szczegoly(menuKontaktow());
+            }
+            else
+            {
+                Console.WriteLine("Brak pozycji do wyswietlenia!");
+                Console.ReadKey();
+            }
         }
     }
 }

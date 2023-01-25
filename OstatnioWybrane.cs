@@ -7,6 +7,7 @@ namespace ksiazkaTelefoniczna
     internal class OstatnioWybrane
     {
         List<Polaczenie> ostatnioWybrane=new List<Polaczenie>(20);
+        Menu menuOW = new Menu();
         public bool czyPuste()
         {
             if (ostatnioWybrane.Count > 0) { return false; }
@@ -32,7 +33,7 @@ namespace ksiazkaTelefoniczna
             }//możne wpadniesz na pomył jak to zrobić, żeby w jednej lini wyświetlał 
                 //nazwę i numer a w drugiej datę
 
-            Menu menuOW = new Menu();
+            
             menuOW.Konfiguruj(kontakty);
             int wiersz;
             ConsoleKeyInfo key;
@@ -48,8 +49,8 @@ namespace ksiazkaTelefoniczna
                     key = Console.ReadKey();
                     if (key.Key == ConsoleKey.Enter)
                     {
-                        ostatnioWybrane[wiersz].Kontakt.zadzwon();
-                        dodajPolaczenie(ostatnioWybrane[wiersz].Kontakt);
+                        ostatnioWybrane[ostatnioWybrane.Count-wiersz-1].Kontakt.zadzwon();
+                        dodajPolaczenie(ostatnioWybrane[ostatnioWybrane.Count - wiersz-1].Kontakt);
                         break;
                     }
                     else
@@ -59,9 +60,7 @@ namespace ksiazkaTelefoniczna
                     
                 }
                 else
-                    
-                break;
-                //Console.ResetColor();
+                    break;
             } while (key.Key != ConsoleKey.Escape);
              
         }
