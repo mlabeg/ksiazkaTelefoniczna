@@ -29,12 +29,12 @@
         <Point X="6.75" Y="3.517" />
         <Point X="6.75" Y="5.12" />
         <Point X="6.248" Y="5.12" />
-        <Point X="6.248" Y="5.406" />
-        <Point X="6" Y="5.406" />
+        <Point X="6.248" Y="5.238" />
+        <Point X="6" Y="5.238" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAABBAAIAAIAAAAAAAAAAAAEBAAABAEAwAGAAAAA=</HashCode>
+      <HashCode>AAAAAABBAAIAAIAAAAAAAAAAAAEBAAAAAEAQAGAAAAA=</HashCode>
       <FileName>KsiazkaTelefoniczna.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -119,12 +119,12 @@
     <InheritanceLine Type="ksiazkaTelefoniczna.listaTel" FixedToPoint="true">
       <Path>
         <Point X="6.75" Y="3.517" />
-        <Point X="6.75" Y="5.425" />
-        <Point X="7.25" Y="5.425" />
+        <Point X="6.75" Y="4.925" />
+        <Point X="7.25" Y="4.925" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAAAAEAAAAACABAAAABAAAIAAAAAGAAACA=</HashCode>
+      <HashCode>AAAAAABAAAAAAAEAAAAAAAAAAAAAAAAIAAAAAEAAAAA=</HashCode>
       <FileName>Ulubione.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -21,7 +21,6 @@ namespace ksiazkaTelefoniczna
         }
         internal string imie { get; set; }
         internal string nazwisko { get; set; }
-        //private string nazwisko { set;}
         internal string email { get; set; }
         public override bool dodajKontakt()
         {
@@ -47,14 +46,12 @@ namespace ksiazkaTelefoniczna
         }
         protected override bool edytuj(StringBuilder[] dane)
         {
-            // Index of the current string being edited
             int wybor = 0;
             bool regexCheckNazwa = true;
             bool regexCheckNumer = true;
             ConsoleKeyInfo key;
             do
             {
-                // Clear the console and print the current dane
                 Console.Clear();
                 Console.WriteLine("Nazwa: ");
                 Console.WriteLine("Imie: ");
@@ -80,7 +77,6 @@ namespace ksiazkaTelefoniczna
 
                 }
 
-                //jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 15, wybor);
                 Console.Write("|");
 
@@ -97,10 +93,8 @@ namespace ksiazkaTelefoniczna
                 }
                 else
                 {
-                    // Get the current string being edited
                     StringBuilder currentStringBuilder = dane[wybor];
 
-                    // Handle backspace key
                     if (key.Key == ConsoleKey.Backspace && currentStringBuilder.Length > 0)
                     {
                         currentStringBuilder.Remove(currentStringBuilder.Length - 1, 1);

@@ -12,7 +12,7 @@ namespace ksiazkaTelefoniczna
         public int liczbaKontaktów = 0;//potrzebne do asocjacji
         public KsiazkaTelefoniczna() : base() { }
                        
-        public void dodaj()//tej funkcji używasz w Program
+        public void dodaj()
         {
             Kontakt nowy;
             Console.WriteLine("Gdzie zapiac kontakt? ");
@@ -64,16 +64,16 @@ namespace ksiazkaTelefoniczna
 
         }
 
-        public void dodajViaConsole(Kontakt kontakt)
+        public void dodajKontakt(Kontakt kontakt)
         {
             kontaktList.Add(kontakt);
-        }
+        }//metoda robocza
         public void dodajKontakt(string nazwa, string numer)
         {
             kontaktList.Add(new Kontakt(nazwa, numer));
             Console.WriteLine($"Pomyslnie dodano kontakt {nazwa}");
            
-        }
+        }//metoda robocza
 
         void wyswietlKontakty(List<Kontakt> kontakty)
         {
@@ -149,10 +149,6 @@ namespace ksiazkaTelefoniczna
             }
         }
 
-        internal void ulubioneKontakty()
-        {
-            ulubione.wyswietlWszystkie();
-        }
         public override void wyswietlWszystkie()
         {
             if (kontaktList.Count != 0)

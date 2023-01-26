@@ -14,16 +14,13 @@ namespace ksiazkaTelefoniczna
         string DrugieImie;
         string Firma;
         string NumerSluzbowy;
-        //DateTime Urodziny;
-
+        
         internal KontaktPHONE() { }
         internal KontaktPHONE(string nazwa, string numer) : base(nazwa, numer) { }
 
         internal string drugieImie { get { return DrugieImie; } }
         internal string firma { get { return Firma; } }
         
-        //internal string urodziny { get { return Urodziny.ToString(); } }
-
         string numerSluzbowy { get; }
 
         public override bool dodajKontakt()
@@ -54,7 +51,6 @@ namespace ksiazkaTelefoniczna
 
         protected override bool edytuj(StringBuilder[] dane)
         {
-            // Index of the current string being edited
             int wybor = 0;
             bool regexCheckNazwa = true;
             bool regexCheckNumer = true;
@@ -70,10 +66,6 @@ namespace ksiazkaTelefoniczna
                 Console.WriteLine("Email: ");
                 Console.WriteLine("Firma: ");
                 Console.WriteLine("Numer służbowy: ");
-                //Console.WriteLine("Data urodzin: ");
-
-                ///TEST CASE:
-                ///nie wszystkie pola w klasie są wypełnione
 
                 for (int i = 0; i < 8; i++)
                 {
@@ -93,11 +85,9 @@ namespace ksiazkaTelefoniczna
 
                 }
 
-                // wyświetlanie kursora, nie wygląda zbyt ładnie ale jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 20, wybor);
                 Console.Write("|");
 
-                // Wait for the user to press a key
                 key = Console.ReadKey(true);
 
                 if (key.Key == ConsoleKey.Escape) break;
@@ -109,18 +99,14 @@ namespace ksiazkaTelefoniczna
                 {
                     wybor = (wybor + 1) % 8;
                 }
-                // Handle other keys
                 else
                 {
-                    // Get the current string being edited
                     StringBuilder currentStringBuilder = dane[wybor];
 
-                    // Handle backspace key
                     if (key.Key == ConsoleKey.Backspace && currentStringBuilder.Length > 0)
                     {
                         currentStringBuilder.Remove(currentStringBuilder.Length - 1, 1);
                     }
-                    // Handle other keys
                     else if (key.Key != ConsoleKey.Enter)
                     {
                         currentStringBuilder.Append(key.KeyChar);
@@ -158,7 +144,6 @@ namespace ksiazkaTelefoniczna
                 this.Email = dane[5].ToString();
                 this.Firma = dane[6].ToString();
                 this.NumerSluzbowy = dane[7].ToString();
-                //this.Urodziny = new DateTime(dane[7].ToString());
                 return true;
             }
             return false;

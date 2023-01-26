@@ -1,13 +1,6 @@
-﻿using Gebal.UITools;
-using Microsoft.SqlServer.Server;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Diagnostics;
-using System.Linq;
+﻿using System;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace ksiazkaTelefoniczna
 {
@@ -17,6 +10,11 @@ namespace ksiazkaTelefoniczna
         protected string Numer;
         int LicznikPolaczen;
 
+        /// <summary>
+        /// Specjalnie zwraca na odwrót, użyłem tej metody w klasu Ulubione, gdzie zależało mi
+        /// na odwróceniu kolejności (wyświetlenie najczęsciej się pojawiających na górze)/// </summary>
+        /// <param name="kontakt"></param>
+        /// <returns></returns>
         public int CompareTo(Kontakt kontakt)
         {
             if (this.licznikPolaczen < kontakt.licznikPolaczen)
@@ -78,7 +76,7 @@ namespace ksiazkaTelefoniczna
             }
             return edytuj(dane);
             
-        }//tego używasz w KsiążkaTelefoniczna
+        }
         public virtual bool edytujKontakt() {
 
             StringBuilder[] dane = new StringBuilder[2];
@@ -111,8 +109,6 @@ namespace ksiazkaTelefoniczna
 
             do
             {
-
-                // Clear the console and print the current dane
                 Console.Clear();
                 Console.WriteLine("Nazwa: ");
                 Console.WriteLine("Numer: ");
@@ -135,7 +131,6 @@ namespace ksiazkaTelefoniczna
 
                 }
 
-                // wyświetlanie kursora, sprawdź czy wgl jest potrzebne
                 Console.SetCursorPosition(dane[wybor].Length + 15, wybor);
                 Console.Write("|");
 
@@ -148,15 +143,12 @@ namespace ksiazkaTelefoniczna
                 }
                 else
                 {
-                    // Get the current string being edited
                     StringBuilder currentStringBuilder = dane[wybor];
 
-                    // Handle backspace key
                     if (key.Key == ConsoleKey.Backspace && currentStringBuilder.Length > 0)
                     {
                         currentStringBuilder.Remove(currentStringBuilder.Length - 1, 1);
                     }
-                    // Handle other keys
                     else if (key.Key != ConsoleKey.Enter)
                     {
                         currentStringBuilder.Append(key.KeyChar);
@@ -214,8 +206,7 @@ namespace ksiazkaTelefoniczna
                        
         }
         
-        public static bool operator <(Kontakt a, Kontakt b)//sprawdź czy tego używasz
-        {
+        public static bool operator <(Kontakt a, Kontakt b) { 
             return string.Compare(a.Nazwa, b.Nazwa) < 0;
         }
         public static bool operator >(Kontakt a, Kontakt b)

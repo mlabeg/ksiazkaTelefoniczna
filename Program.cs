@@ -1,7 +1,5 @@
 ﻿using System;
-
-using Gebal.UITools;//oprócz dodania tego tutaj należy również dodać to w zakładce "odwołania" w drzewie projektu
-
+using Gebal.UITools;
 
 namespace ksiazkaTelefoniczna
 {
@@ -16,7 +14,7 @@ namespace ksiazkaTelefoniczna
 
             ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
             Kontakt kontakt = new KontaktPHONE("mordo", "468");
-            ksiazkaTelefoniczna.dodajViaConsole(kontakt);
+            ksiazkaTelefoniczna.dodajKontakt(kontakt);
             ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
        
              ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
@@ -74,50 +72,6 @@ namespace ksiazkaTelefoniczna
         }
     }
 }
-
-///TODO:
-///poprawić alorytm działania klasy ulubione (LYNQ?)!!!
-///Zobaczyć relacje dla klasy Menu
-/// 
-
-///TODO1.5:
-///	"Enkapsulacja klasy - definiowanie publicznego interfejsu klasy"    <- może sprawdź to w nagraniach
-
-
-///TODO2:
-///sprawić, żeby strzałki lewo/prawo w wpsywaniu/edytowaniu kontaktu nic nie robiły
-///wyszukiwanie kontaktów w czasie wpisywania kolejnych cyfr/liter @KsiazkaTelefoniczna
-///zapisywanie i odczyt z pliku
-///opcja "zadzwoń" bezpośrednio w menu -> dzwoni i zapisuje numer w historii
-
-
-/// TODO3:
-///pole urodziny w KontaktyURZADZENIE
-////wyświetlanie kto ma dzisiaj urodziny pod głównym menu
-///"USTAWIENIA" gdzie możn zmienić jak wyswietać "wyświetlanie wszystkich kotaktów" t
-////tj. "po imieniu"/"po nazwisku"...
-///@Menu można dodać tu sprawdzanie najdłuższej nazwy kontaktu i wyświetlenie tego menu odpowiednio dalej
-///@szczegoly.konfiguruj()@szczegoly()@KsiazkaTelefoniczna.cs(204) można czytać, 
-//////jakiej klasy jest zmienna i dla SIM nie wyświetlać "Wyswietl pelne dane"
-
-
-
-
-///POPRAWKI:
-///polskie znaki w całym projekcie
-///usun funkcje, ktrych nie używasz 
-///narysować graf UML
-///ustaw odpowiedni rozmiar okna, tak, żeby widzieć "zadzwoń" w ostatnioWybierane
-///
-///
-
-
-
-
-//tak napisać funkcję zadzwoń(), żeby używała obiektu innego kontaktu??
-////wg wykładu 7. (8. zjazd)  ??? pomyśl czy to wgl ma sens i czy już tego nie zrobiłeś??
-
-
-///DECYZJE:
-///dodaj() @KsiazkaTelefoniczna czy nie ładniej byłoby gdyby w końcowych if-ach wywoływać funkcję dodajViaConsole()?
-//////na 100% byłoby to wywołanie dynamiczne
+///PRZEJRZEĆ JESZCZE PLIK TODO
+///pomyśl czy usunąć Twoje opisy relacji
+///odkomentować dzwonienie
