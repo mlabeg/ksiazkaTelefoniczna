@@ -24,42 +24,39 @@ namespace ksiazkaTelefoniczna
                 wybor = menu.Wyswietl();
                 switch (wybor)
                 {
-                //to wszystko są wywołania statyczne, pomyśl o tym co zrobić żeby były dynamiczne
-                    //sprawdź definicję wywołania statycznego/dynamicznego
                     case 0:
                         nowy= new Kontakt();
-                    if (nowy.dodajKontakt())
-                    {
-                        kontaktList.Add(nowy);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nie udało się dodać kontaktu!");
-                    }
-                                            
+                        if (nowy.dodajKontakt())
+                        {
+                            kontaktList.Add(nowy);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie udało się dodać kontaktu!");
+                        }
                         break;
                     case 1:
-                    nowy = new KontaktREMOTE();
-                    if (nowy.dodajKontakt())
-                    {
-                        kontaktList.Add(nowy);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nie udało się dodać kontaktu!");
-                    }
-                    break;
+                        nowy = new KontaktREMOTE();
+                        if (nowy.dodajKontakt())
+                        {
+                            kontaktList.Add(nowy);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie udało się dodać kontaktu!");
+                        }
+                        break;
                     case 2:
-                    nowy = new KontaktPHONE();
-                    if (nowy.dodajKontakt())
-                    {
-                        kontaktList.Add(nowy);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nie udało się dodać kontaktu!");
-                    }
-                    break;
+                        nowy = new KontaktPHONE();
+                        if (nowy.dodajKontakt())
+                        {
+                            kontaktList.Add(nowy);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie udało się dodać kontaktu!");
+                        }
+                        break;
                     default:
                         break;
                  }
@@ -73,17 +70,9 @@ namespace ksiazkaTelefoniczna
         }
         public void dodajKontakt(string nazwa, string numer)
         {
-
-            if (true)/*regexNazwa(nazwa) & regexNumer(numer)*/
-            {
-                kontaktList.Add(new Kontakt(nazwa, numer));
-                Console.WriteLine($"Pomyslnie dodano kontakt {nazwa}");
-            }
-            else
-            {
-                Console.WriteLine("Dodanie kontaktu nie powiodło się!");
-                Console.ReadKey();
-            }
+            kontaktList.Add(new Kontakt(nazwa, numer));
+            Console.WriteLine($"Pomyslnie dodano kontakt {nazwa}");
+           
         }
 
         void wyswietlKontakty(List<Kontakt> kontakty)
@@ -102,13 +91,19 @@ namespace ksiazkaTelefoniczna
             }
 
         }
-    
-       /* private void zadzwon(Kontakt kontakt)
+
+        protected override int menuKontaktow()
         {
-            kontakt.zadzwon();
-            ostatnioWybrane.dodajPolaczenie(kontakt);
-        }*/
-       
+            List<string> kontakty = new List<string>();
+            for (int i = 0; i < kontaktList.Count; i++)
+            {
+                kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
+            }
+
+            kontaktow.Konfiguruj(kontakty);
+            return kontaktow.Wyswietl();
+        }
+
         public void wyszukaj()
         {
             Console.Write("Wyszukaj: ");
@@ -162,7 +157,7 @@ namespace ksiazkaTelefoniczna
         {
             if (kontaktList.Count != 0)
             {
-                szczegoly(menuKontaktow());
+                szczegoly(menuKontaktow(),kontaktList);
             }
             else
             {

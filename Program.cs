@@ -48,6 +48,7 @@ namespace ksiazkaTelefoniczna
                         ksiazkaTelefoniczna.ostatnioWybierane();
                         break;
                     case 3:
+                        ulubione.aktualizuj();
                         ulubione.wyswietlWszystkie();
                         break;
 

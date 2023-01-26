@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ksiazkaTelefoniczna
 {
     internal class Ulubione:listaTel
@@ -16,6 +17,25 @@ namespace ksiazkaTelefoniczna
         {
             listaUlubione.Capacity = 5;
             prog();
+        }
+        public void aktualizuj()
+        {
+            var listaTmp = kontaktList.Where(e => e.licznikPolaczen>0).ToList();
+           
+            if(listaTmp.Count > 0)
+            {
+                listaTmp.Sort();
+                if(listaTmp.Count > 5) listaTmp.RemoveRange(5,listaTmp.Count-5);
+                listaUlubione = listaTmp;
+            }
+        }
+
+        private void podmien(List<Kontakt> lista)
+        {
+            for(int i=0;i<lista.Count;i++)
+            {
+                listaUlubione[i]= lista[i];
+            }
         }
 
         public void dodaj(Kontakt kontakt) {
@@ -54,13 +74,25 @@ namespace ksiazkaTelefoniczna
                     progUlubione = p.licznikPolaczen;
                 }
             }
+        } 
+
+        protected override int menuKontaktow()
+        {
+            List<string> kontakty = new List<string>();
+            for (int i = 0; i < listaUlubione.Count; i++)
+            {
+                kontakty.Add(listaUlubione[i].nazwa.ToString() + " " + listaUlubione[i].numer.ToString());
+            }
+
+            kontaktow.Konfiguruj(kontakty);
+            return kontaktow.Wyswietl();
         }
 
         public override void wyswietlWszystkie()
         {
             if (listaUlubione.Count != 0)
             {
-                szczegoly(menuKontaktow());
+                szczegoly(menuKontaktow(),listaUlubione);
             }
             else
             {
@@ -69,5 +101,7 @@ namespace ksiazkaTelefoniczna
                 Console.ReadKey();
             }
         }
+
+        
     }
 }

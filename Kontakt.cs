@@ -11,11 +11,21 @@ using System.Threading;
 
 namespace ksiazkaTelefoniczna
 {
-    class Kontakt
+    class Kontakt: IComparable<Kontakt>
     {
         protected string Nazwa;
         protected string Numer;
         int LicznikPolaczen;
+
+        public int CompareTo(Kontakt kontakt)
+        {
+            if (this.licznikPolaczen < kontakt.licznikPolaczen)
+                return 1;
+            else if (this.licznikPolaczen > kontakt.licznikPolaczen)
+                return -1;
+            else
+                return 0;
+        }
 
         internal string nazwa { get { return Nazwa; } }
         internal string numer { get { return Numer; } }

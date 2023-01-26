@@ -3,9 +3,10 @@
   <Class Name="ksiazkaTelefoniczna.Kontakt">
     <Position X="10.75" Y="0.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAEAEIAAAAAAgCAAgAABAAAAAAQEAEgEAABIAA=</HashCode>
+      <HashCode>AAAAAQAEAEIAAAQAAgCAAgAABAAAAAAQEAEgEAABIAA=</HashCode>
       <FileName>Kontakt.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ksiazkaTelefoniczna.KontaktPHONE">
     <Position X="10.5" Y="10.5" Width="2.5" />
@@ -28,12 +29,12 @@
         <Point X="6.75" Y="3.517" />
         <Point X="6.75" Y="5.12" />
         <Point X="6.248" Y="5.12" />
-        <Point X="6.248" Y="5.322" />
-        <Point X="6" Y="5.322" />
+        <Point X="6.248" Y="5.406" />
+        <Point X="6" Y="5.406" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAABBAAIAAIAAAAAAAAAAAAEBAAABAEAwACAAAAA=</HashCode>
+      <HashCode>AAAAAABBAAIAAIAAAAAAAAAAAAEBAAABAEAwAGAAAAA=</HashCode>
       <FileName>KsiazkaTelefoniczna.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,8 +74,8 @@
         <Point X="3.125" Y="5.138" />
         <Point X="3.125" Y="7.506" />
         <Point X="9.336" Y="7.506" />
-        <Point X="9.336" Y="2.867" />
-        <Point X="10.75" Y="2.867" />
+        <Point X="9.336" Y="2.957" />
+        <Point X="10.75" Y="2.957" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -118,12 +119,12 @@
     <InheritanceLine Type="ksiazkaTelefoniczna.listaTel" FixedToPoint="true">
       <Path>
         <Point X="6.75" Y="3.517" />
-        <Point X="6.75" Y="5.125" />
-        <Point X="7.25" Y="5.125" />
+        <Point X="6.75" Y="5.425" />
+        <Point X="7.25" Y="5.425" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAAAAEAAAAAAABAAAABAAAAAAAAACAAACA=</HashCode>
+      <HashCode>AAAAAABAAAAAAAEAAAAACABAAAABAAAIAAAAAGAAACA=</HashCode>
       <FileName>Ulubione.cs</FileName>
     </TypeIdentifier>
   </Class>

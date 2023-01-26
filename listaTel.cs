@@ -14,26 +14,14 @@ namespace ksiazkaTelefoniczna
 
         protected static Ulubione ulubione = new Ulubione();
 
-        Menu kontaktow = new Menu();
+        protected Menu kontaktow = new Menu();
         Menu szczegolow = new Menu();
         public listaTel()
         {
             szczegolow.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
         }
-        
-        protected int menuKontaktow()
-        {
-            List<string> kontakty = new List<string>();
-            for (int i = 0; i < kontaktList.Count; i++)
-            {
-                kontakty.Add(kontaktList[i].nazwa.ToString() + " " + kontaktList[i].numer.ToString());
-            }
 
-            kontaktow.Konfiguruj(kontakty);
-            return kontaktow.Wyswietl();
-        }
-
-        protected void szczegoly(int wybrany)
+       protected void szczegoly(int wybrany,List<Kontakt> lista)
         {
             int wyswietl = szczegolow.Wyswietl(wybrany);
             if (wyswietl >= 0)
@@ -41,18 +29,17 @@ namespace ksiazkaTelefoniczna
                 switch (wyswietl)
                 {
                     case 0:
-                        //zadzwon(kontaktList[wybrany]);
-                        kontaktList[wybrany].zadzwon();
-                        ostatnioWybrane.dodajPolaczenie(kontaktList[wybrany]);
+                        lista[wybrany].zadzwon();
+                        ostatnioWybrane.dodajPolaczenie(lista[wybrany]);
                         break;
                     case 1:
-                        kontaktList[wybrany].wyswietl();
+                        lista[wybrany].wyswietl();
                         break;
                     case 2:
-                        kontaktList[wybrany].edytujKontakt();
+                        lista[wybrany].edytujKontakt();
                         break;
                     case 3:
-                        kontaktList.RemoveAt(wybrany);
+                         lista.RemoveAt(wybrany);
                         break;
                     default:
                         break;
@@ -60,6 +47,8 @@ namespace ksiazkaTelefoniczna
             }
 
         }
+
         public abstract void wyswietlWszystkie();
+        protected abstract int menuKontaktow();
     }
 }
