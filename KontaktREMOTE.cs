@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,38 @@ namespace ksiazkaTelefoniczna
 {
     class KontaktREMOTE : Kontakt
     {
-        protected string Imie, Nazwisko;
-        protected string Email;
+        protected string _imie, _nazwisko;
+        protected string _email;
+
+
+        [JsonProperty]
+        protected string Imie
+        {
+            get { return _imie; }
+            set { _imie = value; }
+        }
+        [JsonProperty]
+        protected string Nazwisko
+        {
+            get { return _nazwisko; }
+            set { _nazwisko = value; }
+        }
+        [JsonProperty]
+        protected string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+
+
         internal KontaktREMOTE() { }
         internal KontaktREMOTE(string nazwa, string numer) : base(nazwa, numer) { }
 
         KontaktREMOTE(string nazwa, string imie, string nazwisko, string numer, string email) : base(nazwa, numer)
         {
-            Imie = imie;
-            Nazwisko = nazwisko;
-            Email = email;
+            _imie = imie;
+            _nazwisko = nazwisko;
+            _email = email;
         }
         internal string imie { get; set; }
         internal string nazwisko { get; set; }
@@ -36,11 +59,11 @@ namespace ksiazkaTelefoniczna
         {
             StringBuilder[] dane = new StringBuilder[5];
 
-            dane[0] = new StringBuilder(this.Nazwa);
-            dane[1] = new StringBuilder(this.Imie);
-            dane[2] = new StringBuilder(this.Nazwisko);
-            dane[3] = new StringBuilder(this.Numer);
-            dane[4] = new StringBuilder(this.Email);
+            dane[0] = new StringBuilder(this._nazwa);
+            dane[1] = new StringBuilder(this._imie);
+            dane[2] = new StringBuilder(this._nazwisko);
+            dane[3] = new StringBuilder(this._numer);
+            dane[4] = new StringBuilder(this._email);
 
             return (edytuj(dane));
         }
@@ -128,11 +151,11 @@ namespace ksiazkaTelefoniczna
 
             if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
             {
-                this.Nazwa = dane[0].ToString();
-                this.Imie = dane[1].ToString();
-                this.Nazwisko = dane[2].ToString();
-                this.Numer = dane[3].ToString();
-                this.Email = dane[4].ToString();
+                this._nazwa = dane[0].ToString();
+                this._imie = dane[1].ToString();
+                this._nazwisko = dane[2].ToString();
+                this._numer = dane[3].ToString();
+                this._email = dane[4].ToString();
                 return true;
             }
             return false;
@@ -144,31 +167,31 @@ namespace ksiazkaTelefoniczna
             int wiersz = 0;
             Console.Write("Nazwa: ");
             Console.SetCursorPosition(15, wiersz++);
-            Console.WriteLine($"{Nazwa}    ");
+            Console.WriteLine($"{_nazwa}    ");
 
-            if (Imie.Length != 0)
+            if (_imie.Length != 0)
             {
                 Console.WriteLine("Imie: ");
                 Console.SetCursorPosition(15, wiersz++);
-                Console.WriteLine($"{Imie}   ");
+                Console.WriteLine($"{_imie}   ");
             }
             
-            if (Nazwisko.Length != 0)
+            if (_nazwisko.Length != 0)
             {
                 Console.WriteLine("Nazwisko: ");
                 Console.SetCursorPosition(15, wiersz++);
-                Console.WriteLine($"{Nazwisko}   ");
+                Console.WriteLine($"{_nazwisko}   ");
             }
 
             Console.WriteLine("Numer: ");
             Console.SetCursorPosition(15, wiersz++);
-            Console.WriteLine($"{Numer}  ");
+            Console.WriteLine($"{_numer}  ");
 
-            if (Email != null)
+            if (_email != null)
             {
                 Console.WriteLine("Email: ");
                 Console.SetCursorPosition(15, wiersz++);
-                Console.WriteLine($"{Email}  ");
+                Console.WriteLine($"{_email}  ");
             }
 
             Console.ReadKey();

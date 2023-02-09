@@ -9,19 +9,20 @@ namespace ksiazkaTelefoniczna
         {
             Menu menu = new Menu();
             menu.Konfiguruj(new string[] { " Dodaj kontakt", " Spis kontaktów"," Ostatno wybierane"," Ulubione kontakty", " Wyszukaj", " Usun kontakt", " Wyjscie" });
-            KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna();
+            KsiazkaTelefoniczna ksiazkaTelefoniczna = new KsiazkaTelefoniczna(LoadAndSafe.loadAll());
             Ulubione ulubione = new Ulubione();
 
-            ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
-            Kontakt kontakt = new KontaktPHONE("mordo", "468");
+            /*ksiazkaTelefoniczna.dodajKontakt("Ania", "234");
+            Kontakt kontakt = new KontaktPHONE("MRD", "468");
+            LoadAndSafe.safe(kontakt);
             ksiazkaTelefoniczna.dodajKontakt(kontakt);
             ksiazkaTelefoniczna.dodajKontakt("Ola", "456");
        
-             ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
-              ksiazkaTelefoniczna.dodajKontakt("Jan", "147");
-              ksiazkaTelefoniczna.dodajKontakt("Mama", "258");
-              ksiazkaTelefoniczna.dodajKontakt("Tata", "369");
-              ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");
+            ksiazkaTelefoniczna.dodajKontakt("Marek", "789");
+            ksiazkaTelefoniczna.dodajKontakt("Jan", "147");
+            ksiazkaTelefoniczna.dodajKontakt("Mama", "258");
+            ksiazkaTelefoniczna.dodajKontakt("Tata", "369");
+            ksiazkaTelefoniczna.dodajKontakt("i Ja", "159");*/
           
             int zadanie;
             do
@@ -46,7 +47,6 @@ namespace ksiazkaTelefoniczna
                         ksiazkaTelefoniczna.ostatnioWybierane();
                         break;
                     case 3:
-                        ulubione.aktualizuj();
                         ulubione.wyswietlWszystkie();
                         break;
 

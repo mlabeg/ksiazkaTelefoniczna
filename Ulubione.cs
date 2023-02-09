@@ -9,13 +9,12 @@ namespace ksiazkaTelefoniczna
     {
        List<Kontakt> listaUlubione = new List<Kontakt>(5);
 
-        public Ulubione():base()//sprawdzić czy ze względu na to, ze jest to jedna rodzina
-                      // nie możesz użyć innego modyfikatra dostępu
+        public Ulubione():base()
+                      
         {
             listaUlubione.Capacity = 5;
-            prog();
         }
-        public void aktualizuj()
+        private void aktualizuj()
         {
             var listaTmp = kontaktList.Where(e => e.licznikPolaczen>0).ToList();
            
@@ -27,7 +26,7 @@ namespace ksiazkaTelefoniczna
             }
         }
 
-      protected override int menuKontaktow()
+        protected override int menuKontaktow()
         {
             List<string> kontakty = new List<string>();
             for (int i = 0; i < listaUlubione.Count; i++)
@@ -41,6 +40,7 @@ namespace ksiazkaTelefoniczna
 
         public override void wyswietlWszystkie()
         {
+            aktualizuj();
             if (listaUlubione.Count != 0)
             {
                 szczegoly(menuKontaktow(),listaUlubione);
@@ -55,3 +55,4 @@ namespace ksiazkaTelefoniczna
                
     }
 }
+    

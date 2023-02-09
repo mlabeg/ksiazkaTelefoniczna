@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,15 +12,35 @@ namespace ksiazkaTelefoniczna
 {
     internal class KontaktPHONE:KontaktREMOTE
     {
-        string DrugieImie;
-        string Firma;
-        string NumerSluzbowy;
-        
+        string _drugieImie;
+        string _firma;
+        string _numerSluzbowy;
+
+        [JsonProperty]
+        private string DrugieImie
+        {
+            get { return _drugieImie; }
+            set { _drugieImie = value; }
+        }
+        [JsonProperty]
+        private string Firma
+        {
+            get { return _firma; }
+            set { _firma = value; }
+        }
+        [JsonProperty]
+        private string NumerSluzbowy
+        {
+            get { return _numerSluzbowy; }
+            set { _numerSluzbowy = value; }
+        }
+
+
         internal KontaktPHONE() { }
         internal KontaktPHONE(string nazwa, string numer) : base(nazwa, numer) { }
 
-        internal string drugieImie { get { return DrugieImie; } }
-        internal string firma { get { return Firma; } }
+        internal string drugieImie { get { return _drugieImie; } }
+        internal string firma { get { return _firma; } }
         
         string numerSluzbowy { get; }
 
@@ -37,14 +58,14 @@ namespace ksiazkaTelefoniczna
         {
             StringBuilder[] dane = new StringBuilder[8];
 
-            dane[0] = new StringBuilder(this.Nazwa);
-            dane[1] = new StringBuilder(this.Imie);
-            dane[2] = new StringBuilder(this.DrugieImie);
-            dane[3] = new StringBuilder(this.Nazwisko);
-            dane[4] = new StringBuilder(this.Numer);
-            dane[5] = new StringBuilder(this.Email);
-            dane[6] = new StringBuilder(this.Firma);
-            dane[7] = new StringBuilder(this.NumerSluzbowy);
+            dane[0] = new StringBuilder(this._nazwa);
+            dane[1] = new StringBuilder(this._imie);
+            dane[2] = new StringBuilder(this._drugieImie);
+            dane[3] = new StringBuilder(this._nazwisko);
+            dane[4] = new StringBuilder(this._numer);
+            dane[5] = new StringBuilder(this._email);
+            dane[6] = new StringBuilder(this._firma);
+            dane[7] = new StringBuilder(this._numerSluzbowy);
 
             return(edytuj(dane));
         }
@@ -136,14 +157,14 @@ namespace ksiazkaTelefoniczna
 
             if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
             {
-                this.Nazwa = dane[0].ToString();
-                this.Imie = dane[1].ToString();
-                this.DrugieImie = dane[2].ToString();
-                this.Nazwisko = dane[3].ToString();
-                this.Numer = dane[4].ToString();
-                this.Email = dane[5].ToString();
-                this.Firma = dane[6].ToString();
-                this.NumerSluzbowy = dane[7].ToString();
+                this._nazwa = dane[0].ToString();
+                this._imie = dane[1].ToString();
+                this._drugieImie = dane[2].ToString();
+                this._nazwisko = dane[3].ToString();
+                this._numer = dane[4].ToString();
+                this._email = dane[5].ToString();
+                this._firma = dane[6].ToString();
+                this._numerSluzbowy = dane[7].ToString();
                 return true;
             }
             return false;
@@ -155,51 +176,51 @@ namespace ksiazkaTelefoniczna
             int wiersz = 0;
             Console.Write("Nazwa: ");
             Console.SetCursorPosition(20, wiersz++);
-            Console.WriteLine($"{Nazwa}    ");
+            Console.WriteLine($"{_nazwa}    ");
 
-            if ( Imie!=null && Imie.Length != 0)
+            if ( _imie!=null && _imie.Length != 0)
             {
                 Console.WriteLine("Imię: ");
                 Console.SetCursorPosition(20, wiersz++);
-                Console.WriteLine($"{Imie}   ");
+                Console.WriteLine($"{_imie}   ");
             }
-            if (DrugieImie!=null && DrugieImie.Length != 0)
+            if (_drugieImie!=null && _drugieImie.Length != 0)
             {
                 Console.WriteLine("Drugie imię: ");
                 Console.SetCursorPosition(20, wiersz++);
-                Console.WriteLine($"{DrugieImie}   ");
+                Console.WriteLine($"{_drugieImie}   ");
             }
 
-            if (Nazwisko != null && Nazwisko.Length != 0)
+            if (_nazwisko != null && _nazwisko.Length != 0)
             {
                 Console.WriteLine("Nazwisko: ");
                 Console.SetCursorPosition(20, wiersz++);
-                Console.WriteLine($"{Nazwisko}   ");
+                Console.WriteLine($"{_nazwisko}   ");
             }
 
             Console.WriteLine("Numer: ");
             Console.SetCursorPosition(20, wiersz++);
-            Console.WriteLine($"{Numer}  ");
+            Console.WriteLine($"{_numer}  ");
 
-            if (Email != null)
+            if (_email != null)
             {
                 Console.WriteLine("Email: ");
                 Console.SetCursorPosition(20, wiersz++);
-                Console.WriteLine($"{Email}  ");
+                Console.WriteLine($"{_email}  ");
             }
 
-            if (Firma != null)
+            if (_firma != null)
             {
                 Console.WriteLine("Firma: ");
                 Console.SetCursorPosition(20, wiersz++);
-                Console.WriteLine($"{Firma}  ");
+                Console.WriteLine($"{_firma}  ");
             }
 
-            if (NumerSluzbowy != null && NumerSluzbowy.Length != 0)
+            if (_numerSluzbowy != null && _numerSluzbowy.Length != 0)
             {
                 Console.WriteLine("Numer służbowy: ");
                 Console.SetCursorPosition(20, wiersz++);
-                Console.WriteLine($"{NumerSluzbowy}  ");
+                Console.WriteLine($"{_numerSluzbowy}  ");
             }
 
             Console.ReadKey(); 

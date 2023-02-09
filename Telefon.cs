@@ -4,50 +4,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ksiazkaTelefoniczna
+/*namespace ksiazkaTelefoniczna
 {
-     abstract class Telefon
+    abstract class Telefon
     {
         protected string Producent;
         protected string Model;
         protected KsiazkaTelefoniczna ksiazkaTel;
-        public Telefon(){//KOMPOZYCJA razem z linią 31
-            KsiazkaTelefoniczna ksiazkaTel=new KsiazkaTelefoniczna();
-        }
-    }
-    
-    class Siajomi:Telefon{
-           Siajomi(): base(){
-               this.Producent="Siajomi";   
-           }
-        Siajomi(string nazwa):this(){
-            this.Model=nazwa;
-        }
-
-        public void wyswietlDaneKontaktu(Kontakt kontakt)//ZALEŻNOŚĆ
+        public Telefon()
         {
-            Console.WriteLine($"Kontakt: {kontakt.nazwa}, {kontakt.numer}");
-        }
-
-        private void ResetDoUstawienFabrycznych()//KOMPOZYCJA razem z linią 14
-        {
-            ksiazkaTel = null;
-        }
-        void dodanoKontakt()//ASOCJACJA
-        {
-            ksiazkaTel.liczbaKontaktów++;
+            KsiazkaTelefoniczna ksiazkaTel = new KsiazkaTelefoniczna();
         }
     }
 
-    class Epyl:Telefon
+    class Xiaomi : Telefon
     {
-        Epyl() : base()
+        Xiaomi() : base()
         {
-            this.Producent = "Epyl";
+            this.Producent = "Siajomi";
         }
-        Epyl(string nazwa) : this()
+        Xiaomi(string nazwa) : this()
         {
-            this.Model=nazwa;
+            this.Model = nazwa;
+        }
+
+        public void wyswietlDaneKontaktu(Kontakt kontakt)
+        {
+            {
+                Console.WriteLine($"Kontakt: {kontakt.nazwa}, {kontakt.numer}");
+            }
+
+            void ResetDoUstawienFabrycznych()
+            {
+                ksiazkaTel = null;
+            }
+            void dodanoKontakt()
+            {
+                ksiazkaTel.liczbaKontaktów++;
+            }
+        }
+
+        class Apple : Telefon
+        {
+            Apple() : base()
+            {
+                this.Producent = "Epyl";
+            }
+            Apple(string nazwa) : this()
+            {
+                this.Model = nazwa;
+            }
         }
     }
-}
+}*/

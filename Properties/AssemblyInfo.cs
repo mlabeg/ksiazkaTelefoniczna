@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 //
 //      Wersja główna
 //      Wersja pomocnicza
-//      Numer kompilacji
+//      _numer kompilacji
 //      Poprawka
 //
 // Możesz określić wszystkie wartości lub użyć domyślnych numerów kompilacji i poprawki

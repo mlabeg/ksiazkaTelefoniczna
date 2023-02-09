@@ -1,14 +1,30 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace ksiazkaTelefoniczna
 {
     class Kontakt: IComparable<Kontakt>
     {
-        protected string Nazwa;
-        protected string Numer;
+        protected string _nazwa;
+        protected string _numer;
         int LicznikPolaczen;
+
+        [JsonProperty]
+        protected string Nazawa
+        {
+            get { return _nazwa; }
+            set { _nazwa = value; }
+        }
+
+        [JsonProperty]
+        protected string Numer
+        {
+            get { return _numer; }
+            set { _numer = value; }
+        }
 
         /// <summary>
         /// Specjalnie zwraca na odwrót, użyłem tej metody w klasu Ulubione, gdzie zależało mi
@@ -25,8 +41,8 @@ namespace ksiazkaTelefoniczna
                 return 0;
         }
 
-        internal string nazwa { get { return Nazwa; } }
-        internal string numer { get { return Numer; } }
+        internal string nazwa { get { return _nazwa; } }
+        internal string numer { get { return _numer; } }
 
         public int licznikPolaczen { get => LicznikPolaczen; }
 
@@ -34,11 +50,10 @@ namespace ksiazkaTelefoniczna
 
         internal Kontakt(string nazwa, string numer)
         {
-            Nazwa = nazwa;
-            Numer = numer;
+            _nazwa = nazwa;
+            _numer = numer;
             LicznikPolaczen = 0;
         }
-
 
         protected bool regexNazwa(string nazwa)
         {
@@ -80,8 +95,8 @@ namespace ksiazkaTelefoniczna
         public virtual bool edytujKontakt() {
 
             StringBuilder[] dane = new StringBuilder[2];
-            dane[0] = new StringBuilder(this.Nazwa);
-            dane[1] = new StringBuilder(this.Numer);
+            dane[0] = new StringBuilder(this._nazwa);
+            dane[1] = new StringBuilder(this._numer);
          
             return edytuj(dane);
         }
@@ -92,11 +107,11 @@ namespace ksiazkaTelefoniczna
             int wiersz = 0;
             Console.Write("Nazwa: ");
             Console.SetCursorPosition(10, wiersz++);
-            Console.WriteLine($"{Nazwa}    ");
+            Console.WriteLine($"{_nazwa}    ");
 
             Console.WriteLine("Numer: ");
             Console.SetCursorPosition(10, wiersz++);
-            Console.WriteLine($"{Numer}  ");
+            Console.WriteLine($"{_numer}  ");
             Console.ReadKey();
         }
 
@@ -175,12 +190,10 @@ namespace ksiazkaTelefoniczna
                 }
             } while (!(key.Key == ConsoleKey.Enter && regexCheckNazwa && regexCheckNumer));
 
-
-
             if (dane.Length != 0 && key.Key != ConsoleKey.Escape)
             {
-                this.Nazwa = dane[0].ToString();
-                this.Numer = dane[1].ToString();
+                this._nazwa = dane[0].ToString();
+                this._numer = dane[1].ToString();
                 return true;
             }
             return false;
@@ -207,11 +220,11 @@ namespace ksiazkaTelefoniczna
         }
         
         public static bool operator <(Kontakt a, Kontakt b) { 
-            return string.Compare(a.Nazwa, b.Nazwa) < 0;
+            return string.Compare(a._nazwa, b._nazwa) < 0;
         }
         public static bool operator >(Kontakt a, Kontakt b)
         {
-            return string.Compare(a.Nazwa, b.Nazwa) > 0;
+            return string.Compare(a._nazwa, b._nazwa) > 0;
         }
     }
 

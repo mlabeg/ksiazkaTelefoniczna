@@ -12,13 +12,15 @@ namespace ksiazkaTelefoniczna
         protected static List<Kontakt> kontaktList = new List<Kontakt>();
         protected static OstatnioWybrane ostatnioWybrane = new OstatnioWybrane();
 
-        protected static Ulubione ulubione = new Ulubione();
-
         protected Menu kontaktow = new Menu();
         Menu szczegolow = new Menu();
         public listaTel()
         {
             szczegolow.Konfiguruj(new string[] { "Zadzwoń", "Wyswietl pelne dane", "Edytuj", "Usun" });
+        }
+        protected listaTel(List<Kontakt> listaTel) : this()
+        {
+            kontaktList=listaTel;
         }
 
        protected void szczegoly(int wybrany,List<Kontakt> lista)
@@ -37,6 +39,7 @@ namespace ksiazkaTelefoniczna
                         break;
                     case 2:
                         lista[wybrany].edytujKontakt();
+                        uaktualnijZapisaneKontakty();
                         break;
                     case 3:
                          lista.RemoveAt(wybrany);
@@ -50,5 +53,10 @@ namespace ksiazkaTelefoniczna
 
         public abstract void wyswietlWszystkie();
         protected abstract int menuKontaktow();
+
+        public void uaktualnijZapisaneKontakty()
+        {
+            LoadAndSafe.safeAll(kontaktList);
+        }
     }
 }

@@ -2,16 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 
 namespace ksiazkaTelefoniczna
 {
     class KsiazkaTelefoniczna:listaTel
     {
-        public int liczbaKontaktów = 0;//potrzebne do asocjacji
-        public KsiazkaTelefoniczna() : base() { }
-                       
+        //public int liczbaKontaktów = 0;//potrzebne do asocjacji
+        public KsiazkaTelefoniczna() : base() {}
+        public KsiazkaTelefoniczna(List<Kontakt> kontakts) : base(kontakts) {}
+
+
         public void dodaj()
         {
             Kontakt nowy;
@@ -60,6 +64,7 @@ namespace ksiazkaTelefoniczna
                     default:
                         break;
                  }
+            uaktualnijZapisaneKontakty();
             kontaktList.Sort((x,y)=>x.nazwa.CompareTo(y.nazwa));
 
         }
