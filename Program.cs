@@ -75,3 +75,5 @@ namespace ksiazkaTelefoniczna
 ///PRZEJRZEĆ JESZCZE PLIK TODO
 ///pomyśl czy usunąć Twoje opisy relacji
 ///odkomentować dzwonienie
+//dodać na github plik TODO
+//wyświetlanie jakiś zmiennych przy użyciu refleksji i atrybutów wg SECTION 14: Refleksja i atrybuty @Udemy
