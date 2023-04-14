@@ -1,4 +1,4 @@
-﻿using Gebal.UITools;
+using Gebal.UITools;
 using System;
 using System.Collections.Generic;
 
